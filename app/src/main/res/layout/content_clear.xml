@@ -16,17 +16,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:text="게임 결과"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/textBlockCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:layout_centerInParent="true"
+        android:text="남은 블럭"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/textClearTime"
@@ -34,8 +33,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textBlockCount"
         android:layout_centerHorizontal="true"
-        android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:text="클리어 시간"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
         android:id="@+id/buttonGameStart"
@@ -52,8 +51,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonGameStart"
         android:layout_centerHorizontal="true"
-        android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:text="점수"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
     <TextView
@@ -62,8 +61,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textScore"
         android:layout_centerHorizontal="true"
-        android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:text="최고 점수"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
         android:id="@+id/buttonShare"

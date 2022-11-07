@@ -10,8 +10,8 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       mView = new GameView(this);
-      setContentView(mView);
+        mView = new GameView(this);
+        setContentView(mView);
     }
 
     @Override
