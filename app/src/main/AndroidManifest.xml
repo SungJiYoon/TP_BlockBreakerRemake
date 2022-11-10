@@ -18,9 +18,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".GameActivity"/>
+		<activity android:name="com.example.owner.gameactivty.GameActivity"></activity>
         <activity android:name="com.example.owner.gameactivity.ClearActivity"></activity>
-
-    </application>
+        <activity android:name="com.example.owner.gameactivity.SettingActivity"></activity>
+	
+	</application>
 
 </manifest>

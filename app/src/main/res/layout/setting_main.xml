@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingActivity">
+
+    <TextView
+        android:id="@+id/TextSetting"
+        android:layout_width="141dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="16dp"
+        android:text="SETTING"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/returngame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:text="returngame"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.806"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/ToggleVibration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="252dp"
+        android:layout_marginBottom="452dp"
+        android:text="Vibration"
+        android:checked="false"
+        android:textOff="OFF"
+        android:textOn="ON"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/ToggleBgm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="452dp"
+        android:text="Bgm"
+        android:checked="false"
+        android:textOff="OFF"
+        android:textOn="ON"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/ToggleLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="244dp"
+        android:layout_marginBottom="80dp"
+        android:text="Language"
+        android:checked="false"
+        android:textOff="영어"
+        android:textOn="한글"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/RadioGroupLevel"
+        android:layout_width="111dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="110dp"
+        app:layout_constraintEnd_toEndOf="@+id/ToggleVibration"
+        app:layout_constraintStart_toStartOf="@+id/ToggleVibration"
+        app:layout_constraintTop_toBottomOf="@+id/ToggleVibration">
+
+        <RadioButton
+            android:id="@+id/RadioButtonLevel1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="상(100개)"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonLevel2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="중(80개)"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonLevel3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="하(60개)"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/RadioGroupColor"
+        android:layout_width="125dp"
+        android:layout_height="92dp"
+        android:layout_marginTop="110dp"
+        app:layout_constraintEnd_toEndOf="@+id/ToggleBgm"
+        app:layout_constraintStart_toStartOf="@+id/ToggleBgm"
+        app:layout_constraintTop_toBottomOf="@+id/ToggleBgm">
+
+        <RadioButton
+            android:id="@+id/RadioButtonColorRed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RED"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonColorYellow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="YELLOW"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonColorBlue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BLUE"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/TextVibration"
+        android:layout_width="149dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="208dp"
+        android:layout_marginBottom="512dp"
+        android:text="진동 ON/OFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/TextBgm"
+        android:layout_width="161dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="512dp"
+        android:text="배경음악 ON/OFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/TextLevel"
+        android:layout_width="116dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="232dp"
+        android:layout_marginBottom="360dp"
+        android:text="난이도 설정"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/TextColor"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="356dp"
+        android:text="Ball 색상 설정"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/TextLanguage"
+        android:layout_width="131dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="220dp"
+        android:layout_marginBottom="144dp"
+        android:text="한글/영어 설정"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/TextReturnGame"
+        android:layout_width="122dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="136dp"
+        android:text="게임다시하기"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

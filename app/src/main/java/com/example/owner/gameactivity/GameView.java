@@ -15,6 +15,7 @@ import android.view.View;
 import java.util.ArrayList;
 import android.os.Handler;
 import java.util.logging.LogRecord;
+import androidx.appcompat.app.ActionBar;
 
 public class GameView extends TextureView implements TextureView.SurfaceTextureListener,
     View.OnTouchListener {
@@ -26,16 +27,47 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
     volatile  private float mTouchedY;
     private float mBlockWidth;
     private float mBlockHeight;
-    static final int BLOCK_COUNT = 100;
+    int BLOCK_COUNT = 100;
+    //Life를 static에서 변경
     private int mLife;
+    //체력이 바뀜에 따라 타이틀바 변경을 위한 Handler
+    private Handler mLifeHandler ;
     private long mGameStartTime;
     private Handler mHandler ;
+    //타이틀바 선언
+    ActionBar actionBar;
+    
+    //전역적으로 사용될 변수
+    int leveltmp;
+    int colortmp;
+    boolean vibrationtmp;
+    boolean bgmtmp;
+    boolean languagetmp;
 
-    public GameView(final Context context) {
+    public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp,boolean recvbgmtmp,boolean recvlanguagetmp,ActionBar recvactionbar) {
         super(context);
         setSurfaceTextureListener(this);
         setOnTouchListener(this);
+        //파라미터로 받은 변수들을 저장
+        //굳이 안해도 되겠지만 코드 이해를 변하게 하기 위해서 공통적으로 사용되는 변수로 변환
+        leveltmp = recvleveltmp;
+        colortmp = recvcolortmp;
+        vibrationtmp = recvvibrationtmp;
+        bgmtmp = recvbgmtmp;
+        languagetmp = recvlanguagetmp;
+        actionBar = recvactionbar;
 
+        //난이도 설정 1이면 상(블록100), 2이면 중(블록80),3이면 하(블록60)
+        if(leveltmp == 1){
+            BLOCK_COUNT=100;
+        }
+        else if(leveltmp==2){
+            BLOCK_COUNT=80;
+        }
+        else if(leveltmp==3){
+            BLOCK_COUNT=60;
+        }
+        
         mHandler = new Handler() {
             @Override
         public void handleMessage(Message msg){
@@ -43,6 +75,14 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);	        //
                 intent.putExtras(msg.getData());			            //
                 context.startActivity(intent);                              //
+            }
+        };
+        
+        //남은 체력을 출력하는 handler
+        mLifeHandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg){
+                recvactionbar.setTitle(" 남은 체력 : "+String.valueOf(mLife)+"/5");
             }
         };
 
@@ -96,6 +136,8 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                         if(ballBottom > getHeight()){
                             if(mLife > 0){
                             mLife--;
+                          //남은 체력을 출력해줄수있게 handler에 메세지보냄
+                            mLifeHandler.sendMessage(new Message());
                             mBall.reset();
                             }else{
                                 unlockCanvasAndPost(canvas);
