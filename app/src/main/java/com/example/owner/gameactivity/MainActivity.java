@@ -28,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), GameActivity.class);
                 
                 //Activity전환할때 기본적으로 넘겨야하는 변수들
-                myIntent.putExtra("leveltmp",leveltmp);
-                myIntent.putExtra("colortmp",colortmp);
-                myIntent.putExtra("vibrationtmp",vibrationtmp);
-                myIntent.putExtra("bgmtmp",bgmtmp);
-                myIntent.putExtra("languagetmp",languagetmp);
+                intent.putExtra("leveltmp",leveltmp);
+                intent.putExtra("colortmp",colortmp);
+                intent.putExtra("vibrationtmp",vibrationtmp);
+                intent.putExtra("bgmtmp",bgmtmp);
+                intent.putExtra("languagetmp",languagetmp);
                 
                 startActivity(intent);
             }
