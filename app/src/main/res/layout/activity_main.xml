@@ -28,6 +28,13 @@
             android:padding="0sp"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/start_b2" />
+
+
+        <Button
+            android:id="@+id/A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그인하기" />
     </FrameLayout>
 
 
