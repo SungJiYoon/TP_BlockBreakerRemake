@@ -3,6 +3,7 @@ package com.example.owner.gameactivity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,11 +16,16 @@ public class MainActivity extends AppCompatActivity {
     boolean vibrationtmp = false;
     boolean bgmtmp = false;
     boolean languagetmp = false;//true는 한글,false는 영어
+    private static MediaPlayer main_mp; //메인화면 배경음악
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        main_mp = MediaPlayer.create(this, R.raw.main_mugic);
+        main_mp.setLooping(true);
+        main_mp.start();
 
         //게임시작 버튼 클릭시 액티비티 전환
         ImageButton name_rule_btn = (ImageButton) findViewById(R.id.start_btn);
@@ -27,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), GameActivity.class);
-                
+                main_mp.stop();
                 //Activity전환할때 기본적으로 넘겨야하는 변수들
                 intent.putExtra("leveltmp",leveltmp);
                 intent.putExtra("colortmp",colortmp);

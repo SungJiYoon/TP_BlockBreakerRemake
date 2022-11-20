@@ -1,6 +1,7 @@
 package com.example.owner.gameactivity;
 
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
@@ -23,11 +24,16 @@ public class GameActivity extends AppCompatActivity {
     boolean vibrationtmp;
     boolean bgmtmp;
     boolean languagetmp;
+    private static MediaPlayer game_mp; //메인화면 배경음악
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
+        game_mp = MediaPlayer.create(this, R.raw.game_mugic);
+        game_mp.setLooping(true);
+        game_mp.start();
+
         //최종적으로 받아서 영향을 받는 GameActivity에서 모든 변수를 getExtra해줌
         Intent intent = getIntent();
         leveltmp = intent.getIntExtra("leveltmp",1);
