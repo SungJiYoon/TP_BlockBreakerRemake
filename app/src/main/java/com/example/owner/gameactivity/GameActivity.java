@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
@@ -20,25 +21,27 @@ public class GameActivity extends AppCompatActivity {
     MediaPlayer game_mp = null; //게임화면 배경음악
 
     //전역적으로 사용될 변수
-    //defalt값
-    int leveltmp = 1;
-    int colortmp = 2;
-    boolean vibrationtmp = true;
-    boolean bgmtmp = true;
-    boolean languagetmp = true;
+    int leveltmp;
+    int colortmp;
+    boolean vibrationtmp;
+    boolean bgmtmp;
+    boolean languagetmp;
 
+    int []farman = new int[]{R.drawable.iphone2};
+    ImageView img;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //최종적으로 받아서 영향을 받는 GameActivity에서 모든 변수를 getExtra해줌
-        Intent outIntent = getIntent();
-        leveltmp = outIntent.getIntExtra("leveltmp",1);
-        colortmp = outIntent.getIntExtra("colortmp",2);
-        vibrationtmp = outIntent.getBooleanExtra("vibrationtmp",true);
-        bgmtmp = outIntent.getBooleanExtra("bgmtmp",true);
-        languagetmp = outIntent.getBooleanExtra("languagetmp",true);
 
+        //최종적으로 받아서 영향을 받는 GameActivity에서 모든 변수를 getExtra해줌
+        Intent intent = getIntent();
+        leveltmp = intent.getIntExtra("leveltmp",1);
+        colortmp = intent.getIntExtra("colortmp",2);
+        vibrationtmp = intent.getBooleanExtra("vibrationtmp",false);
+        bgmtmp = intent.getBooleanExtra("bgmtmp",false);
+        languagetmp = intent.getBooleanExtra("languagetmp",false);
+        
         //타이틀바를 파라미터로 넘겨줌
         actionBar = getSupportActionBar();
         actionBar.setTitle(" 남은 체력 : 1/1");
@@ -68,7 +71,7 @@ public class GameActivity extends AppCompatActivity {
         }
         game_mp = null;
     }
-
+    
     //메뉴바 추가,활성화
     //res.menu.menu_main을 추가
     public boolean onCreateOptionsMenu(Menu menu){
@@ -77,9 +80,9 @@ public class GameActivity extends AppCompatActivity {
 
         return true;
     }
-
-    //메뉴바에서 setting이 눌렸을때
-    //setting화면으로 전환
+    //res.menu.menu_main을 추가
+    
+    //메뉴바에서 setting이 눌렀을때
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.action_settings:
@@ -90,6 +93,7 @@ public class GameActivity extends AppCompatActivity {
                 myIntent.putExtra("bgmtmp",bgmtmp);
                 myIntent.putExtra("languagetmp",languagetmp);
                 startActivity(myIntent);
+                finish();
                 return true;
 
             case R.id.action_stop:
@@ -100,10 +104,22 @@ public class GameActivity extends AppCompatActivity {
                 this.onResume();
                 return true;
 
+            case R.id.action_Day:
+                this.image();
+                return true;
+
             default:
                 return super.onContextItemSelected(item);
         }
     }
+    public void image(){
+        int g =0;
+        img.setImageResource(farman[g]);
+    }
+
+
+
+    //setting화면으로 전환
 
     @Override
     protected void onPause() {
