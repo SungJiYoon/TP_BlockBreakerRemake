@@ -6,10 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.ActionBar;
 import android.content.Intent;
 
@@ -24,10 +22,14 @@ public class GameActivity extends AppCompatActivity {
     boolean bgmtmp;
     boolean languagetmp;
 
+    int []farman = new int[]{R.drawable.iphone2};
+    ImageView img;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+        setContentView(R.layout.setting_main);
+        ImageView img = (ImageView)findViewById(R.id.imageView);
+
         //최종적으로 받아서 영향을 받는 GameActivity에서 모든 변수를 getExtra해줌
         Intent intent = getIntent();
         leveltmp = intent.getIntExtra("leveltmp",1);
@@ -71,10 +73,21 @@ public class GameActivity extends AppCompatActivity {
                 this.onResume();
                 return true;
 
+            case R.id.action_Day:
+                this.image();
+                return true;
+
             default:
                 return super.onContextItemSelected(item);
         }
     }
+    public void image(){
+        int g =0;
+        img.setImageResource(farman[g]);
+    }
+
+
+
     //setting화면으로 전환
 
     @Override

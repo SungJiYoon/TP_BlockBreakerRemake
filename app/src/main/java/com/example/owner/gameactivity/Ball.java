@@ -1,10 +1,12 @@
 package com.example.owner.gameactivity;
 
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
 public class Ball implements DrawableItem {
+    public int color;
     private float mX;
     private float mY;
     private float mSpeedX;
@@ -36,6 +38,10 @@ public class Ball implements DrawableItem {
         mSpeedY = speedY;
     }
 
+    public void getColor(int num){
+        color = num;
+    }
+
     public Ball(float radius, float initialX, float initialY){
         mRadius = radius;
         mSpeedX = radius /5;
@@ -52,10 +58,33 @@ public class Ball implements DrawableItem {
         mX += mSpeedX;
         mY += mSpeedY;
     }
+
     public void draw(Canvas canvas, Paint paint){
-        paint.setColor(Color.WHITE);
-        paint.setStyle(Paint.Style.FILL);
-        canvas.drawCircle(mX,mY,mRadius, paint);
+
+//        Intent intent = getIntent();
+//        colortmp = intent.getIntExtra("colortmp",2);
+        color = 3;
+        if(color == 1){
+            paint.setColor(Color.RED);
+            paint.setStyle(Paint.Style.FILL);
+            canvas.drawCircle(mX,mY,mRadius, paint);
+        }
+        else if(color == 2){
+            paint.setColor(Color.YELLOW);
+            paint.setStyle(Paint.Style.FILL);
+            canvas.drawCircle(mX,mY,mRadius, paint);
+        }
+        else if(color == 3){
+            paint.setColor(Color.BLUE);
+            paint.setStyle(Paint.Style.FILL);
+            canvas.drawCircle(mX,mY,mRadius, paint);
+        }
+        else{
+            paint.setColor(Color.WHITE);
+            paint.setStyle(Paint.Style.FILL);
+            canvas.drawCircle(mX,mY,mRadius, paint);
+
+        }
     }
 
     public void reset(){

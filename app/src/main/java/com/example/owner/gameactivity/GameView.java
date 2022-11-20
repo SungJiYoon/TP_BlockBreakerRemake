@@ -2,10 +2,14 @@ package com.example.owner.gameactivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.SurfaceTexture;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.MotionEvent;
@@ -14,6 +18,8 @@ import android.view.View;
 
 import java.util.ArrayList;
 import android.os.Handler;
+import android.widget.ImageView;
+
 import java.util.logging.LogRecord;
 import androidx.appcompat.app.ActionBar;
 
@@ -44,6 +50,9 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
     boolean bgmtmp;
     boolean languagetmp;
 
+
+
+
     public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp,boolean recvbgmtmp,boolean recvlanguagetmp,ActionBar recvactionbar) {
         super(context);
         setSurfaceTextureListener(this);
@@ -56,7 +65,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         bgmtmp = recvbgmtmp;
         languagetmp = recvlanguagetmp;
         actionBar = recvactionbar;
-
+        int num = 0;
         //난이도 설정 1이면 상(블록100), 2이면 중(블록80),3이면 하(블록60)
         if(leveltmp == 1){
             BLOCK_COUNT=100;
@@ -67,7 +76,22 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         else if(leveltmp==3){
             BLOCK_COUNT=60;
         }
-        
+
+        //mBall.getColor(colortmp);
+//        if(recvcolortmp == 1){
+//            num=1;
+//            mBall.getColor(num);
+//        }
+//        else if(recvcolortmp==2){
+//            num=2;
+//            mBall.getColor(num);
+//        }
+//        else if(recvcolortmp==3){
+//            num=3;
+//            mBall.getColor(num);
+//        }
+
+
         mHandler = new Handler() {
             @Override
         public void handleMessage(Message msg){
@@ -89,15 +113,22 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
 
     }
 
+//    int []farman = new int[]{R.drawable.iphone2};
+//    ImageView img;
+
 
     public void start(){
         mThread = new Thread(new Runnable() {
+
             @Override
             public void run() {
 
                 Paint paint = new Paint();
                 paint.setStyle(Paint.Style.FILL);
                 paint.setColor(Color.RED);
+
+
+
 
                 while(true){
                     long startTime = System.currentTimeMillis();
@@ -111,7 +142,19 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                         if(canvas==null){
                             continue; // 캔버스를 잠글수없다면 다시 while문으로 이동
                         }
-                        canvas.drawColor(Color.BLACK); // 화면에 칠함
+
+
+//                        ImageView img = (ImageView)findViewById(R.id.imageView);
+//
+//                            int g =0;
+//                            img.setImageResource(farman[g]);
+
+                        Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.iphone2);
+                        canvas.drawBitmap(b,0,0,null);
+
+
+
+                       // canvas.drawColor(Color.BLACK); // 화면에 칠함             ///////////
 
                         float padLeft = mTouchedX - mPadHalfWidth;
                         float padRight = mTouchedX + mPadHalfWidth;
@@ -212,6 +255,8 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                             mBall.setSpeedX(ballSpeedX);
 
 
+
+
                         }
 
                        // mPad.draw(canvas, paint);
@@ -303,6 +348,9 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
 
         mBallRadius = width < height? width/40 : height/40;
         mBall = new Ball(mBallRadius, width/2, height/2);
+
+
+
         mItemList.add(mBall);
         mLife = 5;
         mGameStartTime = System.currentTimeMillis();
