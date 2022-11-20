@@ -37,5 +37,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button button = (Button)findViewById(R.id.loginstart); /*페이지 전환버튼*/
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);//액티비티 띄우기
+            }
+        });
     }
 }
