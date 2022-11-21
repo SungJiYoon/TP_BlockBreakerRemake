@@ -65,6 +65,7 @@ public class GameActivity extends AppCompatActivity {
             case R.id.action_settings:
                 Intent myIntent = new Intent(GameActivity.this,SettingActivity.class);
                 startActivity(myIntent);
+                game_mp.pause(); //다른 Activity로 넘어가면 bgm끄기
                 finish();
                 return true;
 

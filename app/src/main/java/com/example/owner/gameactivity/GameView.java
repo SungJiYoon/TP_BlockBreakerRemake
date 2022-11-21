@@ -84,6 +84,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);	        //
                 intent.putExtras(msg.getData());			            //
                 context.startActivity(intent);                              //
+                game_mp.pause(); //다른 Activity로 넘어가면 bgm끄기
             }
         };
         
