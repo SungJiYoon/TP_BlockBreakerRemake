@@ -15,7 +15,6 @@ public class LoginActivity extends Info {
     String Pass;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,14 +23,13 @@ public class LoginActivity extends Info {
         passText = (EditText) findViewById(R.id.LogPass);
 
         if (database != null) { //데이터 베이스에 있으면
-            Cursor cursor = database.rawQuery("SELECT name, num, pass FROM " + tableName, null);
+            Cursor cursor = database.rawQuery("SELECT name, num, pass FROM " + login_tableName, null);
             int count = cursor.getCount();
             for(int i=0;i<count;i++) {
                 cursor.moveToNext();
                 Cname = cursor.getString(0);
                 Cnum = cursor.getString(1);
                 Cpass = cursor.getString(2);
-
             }
 
             Button loginButton = (Button)findViewById(R.id.login); /*페이지 전환버튼*/

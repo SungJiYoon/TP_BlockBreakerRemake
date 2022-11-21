@@ -63,24 +63,45 @@
         android:text="점수"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-
     <TextView
-        android:id="@+id/textHighScore"
+        android:id="@+id/score1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textScore"
-        android:layout_centerHorizontal="true"
-        android:text="최고 점수"
+        android:layout_below="@+id/buttonGameStart"
+        android:layout_marginTop="62dp"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/buttonShare"
+    <TextView
+        android:id="@+id/score2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textHighScore"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/buttonGameStart"
+        android:layout_marginTop="90dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        android:background="@drawable/button_background"
-        android:text="공유"/>
+    <TextView
+        android:id="@+id/score3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonGameStart"
+        android:layout_marginTop="126dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/score4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonGameStart"
+        android:layout_marginTop="156dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/score5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonGameStart"
+        android:layout_marginTop="199dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
 
 </RelativeLayout>

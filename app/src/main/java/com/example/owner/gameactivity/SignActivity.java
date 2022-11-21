@@ -30,7 +30,7 @@ public class SignActivity extends Info {
                 Tpass = PASS.getText().toString();
                 Tpasssign = PASSSIGN.getText().toString();
                 Tnum = NUM.getText().toString();
-                Cursor cursor = database.rawQuery("SELECT name, num FROM " + tableName, null);
+                Cursor cursor = database.rawQuery("SELECT name, num FROM " + login_tableName, null);
                 int count = cursor.getCount();
 
                 for(int i=0;i<count;i++) {
@@ -55,7 +55,7 @@ public class SignActivity extends Info {
                 } else {
                     try{
                         if (database != null) {
-                            database.execSQL("INSERT INTO " + tableName + "(name, pass, passCheck, num) VALUES" +
+                            database.execSQL("INSERT INTO " + login_tableName + "(name, pass, passCheck, num) VALUES" +
                                     "(" + "'" + Tname + "'" + "," + "'" + Tpass + "'" + "," + "'" + Tpasssign + "'" + "," + "'" +  Tnum + "'" +  ")");
                         }
                     } catch (Exception e) {
