@@ -1,5 +1,9 @@
 package com.example.owner.gameactivity;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -23,9 +27,9 @@ public class SettingActivity extends AppCompatActivity{
     //선택이 안되어졌을때는 기본값으로 넘어가도록 변수설정
     int leveltmp = 1;//1은 상,2은 중,3은 하
     int colortmp = 2;//1은 빨간색,2은 노란색,3은 파란색
-    boolean vibrationtmp = false;
-    boolean bgmtmp = false;
-    boolean languagetmp = false;//true는 한글,false는 영어
+    boolean vibrationtmp = true;
+    boolean bgmtmp = true;
+    boolean languagetmp = true;//true는 한글,false는 영어
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,26 +37,27 @@ public class SettingActivity extends AppCompatActivity{
         setContentView(R.layout.setting_main);
 
         //returnstart버튼이 눌렸을때
+        //game을 시작
         returnStart = (Button)findViewById(R.id.returngame);
         returnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent myIntent = new Intent(SettingActivity.this,GameActivity.class);
+                Intent intent = new Intent(SettingActivity.this,GameActivity.class);
 
                 //Activity전환할때 기본적으로 넘겨야하는 변수들
-                myIntent.putExtra("leveltmp",leveltmp);
-                myIntent.putExtra("colortmp",colortmp);
-                myIntent.putExtra("vibrationtmp",vibrationtmp);
-                myIntent.putExtra("bgmtmp",bgmtmp);
-                myIntent.putExtra("languagetmp",languagetmp);
+                intent.putExtra("leveltmp",leveltmp);
+                intent.putExtra("colortmp",colortmp);
+                intent.putExtra("vibrationtmp",vibrationtmp);
+                intent.putExtra("bgmtmp",bgmtmp);
+                intent.putExtra("languagetmp",languagetmp);
 
-                startActivity(myIntent);
+                startActivity(intent);
                 finish();
             }
         });
-        //game을 시작
 
         //난이도Radio버튼이 눌렸을때
+        //난이도를 설정하고 변경
         levelGroup = (RadioGroup) findViewById(R.id.RadioGroupLevel);
         levelGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -74,9 +79,9 @@ public class SettingActivity extends AppCompatActivity{
                 }
             }
         });
-        //난이도를 설정하고 변경
 
         //색상Radio버튼이 눌렸을때
+        //색상을 설정하고 변경
         colorGroup = (RadioGroup) findViewById(R.id.RadioGroupColor);
         colorGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -98,9 +103,9 @@ public class SettingActivity extends AppCompatActivity{
                 }
             }
         });
-        //색상을 설정하고 변경
 
         //진동Toggle버튼이 눌렸을때
+        //진동On/Off
         vibrationToggle =(ToggleButton) findViewById(R.id.ToggleVibration);
         vibrationToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -115,9 +120,9 @@ public class SettingActivity extends AppCompatActivity{
                 }
             }
         });
-        //진동On/Off
 
         //배경음악Toggle버튼이 눌렸을때
+        //배경음악On/Off
         bgmToggle = (ToggleButton) findViewById(R.id.ToggleBgm);
         bgmToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -132,9 +137,9 @@ public class SettingActivity extends AppCompatActivity{
                 }
             }
         });
-        //배경음악On/Off
 
         //언어Toggle버튼이 눌렸을때
+        //언어On/Off
         languageToggle = (ToggleButton) findViewById(R.id.ToggleLanguage);
         languageToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -149,7 +154,6 @@ public class SettingActivity extends AppCompatActivity{
                 }
             }
         });
-        //언어On/Off
-
     }
+
 }

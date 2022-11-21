@@ -17,6 +17,7 @@ import android.content.Intent;
 public class GameActivity extends AppCompatActivity {
     private GameView mView;
     ActionBar actionBar;
+    private static MediaPlayer game_mp; //게임화면 배경음악
 
     //전역적으로 사용될 변수
     int leveltmp;
@@ -24,7 +25,6 @@ public class GameActivity extends AppCompatActivity {
     boolean vibrationtmp;
     boolean bgmtmp;
     boolean languagetmp;
-    private static MediaPlayer game_mp; //메인화면 배경음악
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,22 +32,21 @@ public class GameActivity extends AppCompatActivity {
 
         game_mp = MediaPlayer.create(this, R.raw.game_mugic);
         game_mp.setLooping(true);
-        game_mp.start();
 
         //최종적으로 받아서 영향을 받는 GameActivity에서 모든 변수를 getExtra해줌
-        Intent intent = getIntent();
-        leveltmp = intent.getIntExtra("leveltmp",1);
-        colortmp = intent.getIntExtra("colortmp",2);
-        vibrationtmp = intent.getBooleanExtra("vibrationtmp",false);
-        bgmtmp = intent.getBooleanExtra("bgmtmp",false);
-        languagetmp = intent.getBooleanExtra("languagetmp",false);
-        
+        Intent outIntent = getIntent();
+        leveltmp = outIntent.getIntExtra("leveltmp",1);
+        colortmp = outIntent.getIntExtra("colortmp",2);
+        vibrationtmp = outIntent.getBooleanExtra("vibrationtmp",true);
+        bgmtmp = outIntent.getBooleanExtra("bgmtmp",true);
+        languagetmp = outIntent.getBooleanExtra("languagetmp",true);
+
         //타이틀바를 파라미터로 넘겨줌
         actionBar = getSupportActionBar();
         actionBar.setTitle(" 남은 체력 : 5/5");
         
       //받은 변수들을 GameView에 파라미터로 넘겨줌
-        mView = new GameView(this,leveltmp,colortmp,vibrationtmp,bgmtmp,languagetmp,actionBar);
+        mView = new GameView(this,leveltmp,colortmp,vibrationtmp,game_mp,bgmtmp,languagetmp,actionBar);
         setContentView(mView);
     }
     

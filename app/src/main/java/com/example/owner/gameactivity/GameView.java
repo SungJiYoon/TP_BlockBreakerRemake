@@ -6,8 +6,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.SurfaceTexture;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Message;
+import android.os.Vibrator;
 import android.view.MotionEvent;
 import android.view.TextureView;
 import android.view.View;
@@ -31,12 +33,12 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
     //Life를 static에서 변경
     private int mLife;
     //체력이 바뀜에 따라 타이틀바 변경을 위한 Handler
-    private Handler mLifeHandler ;
+    private Handler mLifeHandler;
     private long mGameStartTime;
-    private Handler mHandler ;
+    private Handler mHandler;
     //타이틀바 선언
     ActionBar actionBar;
-    
+
     //전역적으로 사용될 변수
     int leveltmp;
     int colortmp;
@@ -44,7 +46,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
     boolean bgmtmp;
     boolean languagetmp;
 
-    public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp,boolean recvbgmtmp,boolean recvlanguagetmp,ActionBar recvactionbar) {
+    public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp, MediaPlayer game_mp, boolean recvbgmtmp,boolean recvlanguagetmp,ActionBar recvactionbar) {
         super(context);
         setSurfaceTextureListener(this);
         setOnTouchListener(this);
@@ -66,6 +68,13 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         }
         else if(leveltmp==3){
             BLOCK_COUNT=60;
+        }
+
+        if(bgmtmp == true){
+            game_mp.start();
+        }
+        else{
+            game_mp.pause();
         }
         
         mHandler = new Handler() {
@@ -94,7 +103,6 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         mThread = new Thread(new Runnable() {
             @Override
             public void run() {
-
                 Paint paint = new Paint();
                 paint.setStyle(Paint.Style.FILL);
                 paint.setColor(Color.RED);
