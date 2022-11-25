@@ -53,6 +53,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
 
 
 
+
     public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp,boolean recvbgmtmp,boolean recvlanguagetmp,ActionBar recvactionbar) {
         super(context);
         setSurfaceTextureListener(this);
@@ -77,18 +78,15 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
             BLOCK_COUNT=60;
         }
 
-        //mBall.getColor(colortmp);
-//        if(recvcolortmp == 1){
-//            num=1;
-//            mBall.getColor(num);
+
+//        if(colortmp == 1){
+//            mBall.red();
 //        }
-//        else if(recvcolortmp==2){
-//            num=2;
-//            mBall.getColor(num);
+//        else if(colortmp==2){
+//            mBall.yellow();
 //        }
-//        else if(recvcolortmp==3){
-//            num=3;
-//            mBall.getColor(num);
+//        else if(colortmp==3){
+//            mBall.blue();
 //        }
 
 
@@ -109,6 +107,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                 recvactionbar.setTitle(" 남은 체력 : "+String.valueOf(mLife)+"/5");
             }
         };
+
 
 
     }
@@ -347,7 +346,16 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         mPadHalfWidth = width /10;
 
         mBallRadius = width < height? width/40 : height/40;
-        mBall = new Ball(mBallRadius, width/2, height/2);
+        mBall = new Ball(mBallRadius, width/2, height/2, 0);
+         if(colortmp == 1){
+             mBall.red();
+          }
+          else if(colortmp==2){
+              mBall.yellow();
+          }
+         else if(colortmp==3){
+              mBall.blue();
+          }
 
 
 

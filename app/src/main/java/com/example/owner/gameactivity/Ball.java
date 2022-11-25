@@ -38,11 +38,9 @@ public class Ball implements DrawableItem {
         mSpeedY = speedY;
     }
 
-    public void getColor(int num){
-        color = num;
-    }
 
-    public Ball(float radius, float initialX, float initialY){
+
+    public Ball(float radius, float initialX, float initialY, int xcolor){
         mRadius = radius;
         mSpeedX = radius /5;
         mSpeedY = radius/5;
@@ -53,17 +51,31 @@ public class Ball implements DrawableItem {
         mInitialSpeedY = mSpeedY;
         mInitialX = mX;
         mInitialY = mY;
+
+        xcolor = color; //회색인 이유?  is never used 좀 찾아보기
     }
     public void move(){
         mX += mSpeedX;
         mY += mSpeedY;
+    }
+    public void red(){
+        color = 1;
+    }
+    public void yellow(){
+        color = 2;
+    }
+    public void blue(){
+        color = 3;
+    }
+    public void white(){
+        color = 4;
     }
 
     public void draw(Canvas canvas, Paint paint){
 
 //        Intent intent = getIntent();
 //        colortmp = intent.getIntExtra("colortmp",2);
-        color = 3;
+
         if(color == 1){
             paint.setColor(Color.RED);
             paint.setStyle(Paint.Style.FILL);

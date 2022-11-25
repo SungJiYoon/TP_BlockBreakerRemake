@@ -21,7 +21,7 @@ public class Pad implements DrawableItem{
     }
 
     public void draw(Canvas canvas, Paint paint){
-        paint.setColor(Color.LTGRAY);
+        paint.setColor(Color.BLACK);
         paint.setStyle(Paint.Style.FILL);
         canvas.drawRect(mLeft,mTop,mRight,mBottom, paint);
     }

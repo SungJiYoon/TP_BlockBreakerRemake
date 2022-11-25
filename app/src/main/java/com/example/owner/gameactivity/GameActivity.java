@@ -81,6 +81,8 @@ public class GameActivity extends AppCompatActivity {
                 return super.onContextItemSelected(item);
         }
     }
+
+
     public void image(){
         int g =0;
         img.setImageResource(farman[g]);
