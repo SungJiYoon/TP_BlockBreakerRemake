@@ -39,12 +39,12 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
     //Life를 static에서 변경
     private int mLife;
     //체력이 바뀜에 따라 타이틀바 변경을 위한 Handler
-    private Handler mLifeHandler;
+    private Handler mLifeHandler ;
     private long mGameStartTime;
-    private Handler mHandler;
+    private Handler mHandler ;
     //타이틀바 선언
     ActionBar actionBar;
-
+    
     //전역적으로 사용될 변수
     int leveltmp;
     int colortmp;
@@ -75,7 +75,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         else if(leveltmp==3){
             BLOCK_COUNT=60;
         }
-        
+
         mHandler = new Handler() {
             @Override
         public void handleMessage(Message msg){
@@ -98,15 +98,22 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
 
     }
 
+//    int []farman = new int[]{R.drawable.iphone2};
+//    ImageView img;
+
 
     public void start(){
         mThread = new Thread(new Runnable() {
+
             @Override
             public void run() {
 
                 Paint paint = new Paint();
                 paint.setStyle(Paint.Style.FILL);
                 paint.setColor(Color.RED);
+
+
+
 
                 while(true){
                     long startTime = System.currentTimeMillis();
@@ -233,6 +240,8 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                             mBall.setSpeedX(ballSpeedX);
 
 
+
+
                         }
 
                        // mPad.draw(canvas, paint);
@@ -323,6 +332,19 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         mPadHalfWidth = width /10;
 
         mBallRadius = width < height? width/40 : height/40;
+        mBall = new Ball(mBallRadius, width/2, height/2, 0);
+         if(colortmp == 1){
+             mBall.red();
+          }
+          else if(colortmp==2){
+              mBall.yellow();
+          }
+         else if(colortmp==3){
+              mBall.blue();
+          }
+
+
+
         mBall = new Ball(mBallRadius, width/2, height/2);
         mItemList.add(mBall);
         mLife = 5;
