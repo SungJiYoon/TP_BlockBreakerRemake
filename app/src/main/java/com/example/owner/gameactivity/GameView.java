@@ -2,28 +2,21 @@ package com.example.owner.gameactivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.SurfaceTexture;
-import android.media.MediaPlayer;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Message;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.TextureView;
 import android.view.View;
-
 import java.util.ArrayList;
 import android.os.Handler;
-import android.widget.ImageView;
-
-import java.util.logging.LogRecord;
 import androidx.appcompat.app.ActionBar;
 
 public class GameView extends TextureView implements TextureView.SurfaceTextureListener,
@@ -45,6 +38,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
     private Handler mHandler ;
     //타이틀바 선언
     ActionBar actionBar;
+    Vibrator vibration;
     
     //전역적으로 사용될 변수
     int leveltmp;
@@ -53,7 +47,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
     boolean bgmtmp;
     boolean languagetmp;
 
-    public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp,boolean recvbgmtmp,boolean recvlanguagetmp,ActionBar recvactionbar) {
+    public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp,Vibrator vibratortmp, boolean recvbgmtmp,boolean recvlanguagetmp,ActionBar recvactionbar) {
         super(context);
         setSurfaceTextureListener(this);
         setOnTouchListener(this);
@@ -65,7 +59,9 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         bgmtmp = recvbgmtmp;
         languagetmp = recvlanguagetmp;
         actionBar = recvactionbar;
+        vibration = vibratortmp;
         int num = 0;
+
         //난이도 설정 1이면 상(블록100), 2이면 중(블록80),3이면 하(블록60)
         if(leveltmp == 1){
             BLOCK_COUNT=100;
@@ -121,18 +117,8 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                             continue; // 캔버스를 잠글수없다면 다시 while문으로 이동
                         }
 
-
-//                        ImageView img = (ImageView)findViewById(R.id.imageView);
-//
-//                            int g =0;
-//                            img.setImageResource(farman[g]);
-
                         Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.iphone2);
                         canvas.drawBitmap(b,0,0,null);
-
-
-
-                       // canvas.drawColor(Color.BLACK); // 화면에 칠함             ///////////
 
                         float padLeft = mTouchedX - mPadHalfWidth;
                         float padRight = mTouchedX + mPadHalfWidth;
@@ -153,13 +139,16 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                         }
 
                         //바닥에 떨어진 판정
-
                         if(ballBottom > getHeight()){
+                            if(vibrationtmp == true){
+                                vibration.vibrate(500); // 0.5초간 진동
+                                    Log.v("Vibration", "YES");
+                            }
                             if(mLife > 0){
-                            mLife--;
-                          //남은 체력을 출력해줄수있게 handler에 메세지보냄
-                            mLifeHandler.sendMessage(new Message());
-                            mBall.reset(); //초기화
+                                mLife--;
+                                //남은 체력을 출력해줄수있게 handler에 메세지보냄
+                                mLifeHandler.sendMessage(new Message());
+                                mBall.reset();
                             }else{
                                 unlockCanvasAndPost(canvas);
                                 Message message = Message.obtain();
@@ -171,9 +160,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                                 //체력이 없을때 종료되기위해 메시지보냄
                                 mHandler.sendMessage(message);
                                 return;
-
                             }
-
                         }
 
                         //블록과 공의 충돌 판정

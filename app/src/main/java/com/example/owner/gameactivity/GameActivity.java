@@ -1,17 +1,14 @@
 package com.example.owner.gameactivity;
 
-
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import android.os.Vibrator;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import android.content.Intent;
 
@@ -26,6 +23,7 @@ public class GameActivity extends AppCompatActivity {
     boolean vibrationtmp;
     boolean bgmtmp;
     boolean languagetmp;
+    Vibrator vibrator;
 
     int []farman = new int[]{R.drawable.iphone2};
     ImageView img;
@@ -40,13 +38,16 @@ public class GameActivity extends AppCompatActivity {
         vibrationtmp = intent.getBooleanExtra("vibrationtmp",true);
         bgmtmp = intent.getBooleanExtra("bgmtmp",true);
         languagetmp = intent.getBooleanExtra("languagetmp",true);
-        
+
+        //진동 생성
+        vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+
         //타이틀바를 파라미터로 넘겨줌
         actionBar = getSupportActionBar();
         actionBar.setTitle(" 남은 체력 : 1/1");
         
       //받은 변수들을 GameView에 파라미터로 넘겨줌
-        mView = new GameView(this,leveltmp,colortmp,vibrationtmp,bgmtmp,languagetmp,actionBar);
+        mView = new GameView(this,leveltmp,colortmp,vibrationtmp,vibrator,bgmtmp,languagetmp,actionBar);
         setContentView(mView);
 
         if(bgmtmp == true){
