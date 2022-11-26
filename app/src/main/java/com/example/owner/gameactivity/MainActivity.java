@@ -12,10 +12,10 @@ import android.widget.ImageButton;
 public class MainActivity extends AppCompatActivity {
     //전역적으로 사용될 변수
     int leveltmp = 1;//1은 상,2은 중,3은 하
-    int colortmp = 2;//1은 빨간색,2은 노란색,3은 파란색
+    int colortmp = 4;//1은 빨간색,2은 노란색,3은 파란색, 4 흰색
     boolean vibrationtmp = true;
     boolean bgmtmp = true;
-    boolean languagetmp = true;//true는 한글,false는 영어
+    boolean themetmp = true;//true는 한글,false는 영어
     MediaPlayer main_mp = null; //게임화면 배경음악
     
     @Override
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("colortmp",colortmp);
                 intent.putExtra("vibrationtmp",vibrationtmp);
                 intent.putExtra("bgmtmp",bgmtmp);
-                intent.putExtra("languagetmp",languagetmp);
+                intent.putExtra("themetmp",themetmp);
 
                 startActivity(intent);
             }

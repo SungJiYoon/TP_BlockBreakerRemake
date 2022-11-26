@@ -44,15 +44,18 @@ public class Block implements DrawableItem {
                 }
             }
             // 블록색깔 나중에 바꾸기
-            paint.setColor(Color.WHITE);
+            paint.setARGB(250, 255, 255, 102);
+            //paint.setAntiAlias(true); 부드럽게
             paint.setStyle(Paint.Style.FILL);
+//            paint.setStrokeCap(Paint.Cap.ROUND);     선 둥글게
+//            paint.setStrokeJoin(Paint.Join.ROUND);   사각형 둥글게
             canvas.drawRect(mLeft,mTop,mRight,mBottom,paint);
             // 테두리선 부분 그리기
             paint.setColor(Color.BLACK);
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth(4f);
-            canvas.drawRect(mLeft,mTop,mRight,mBottom,paint);
 
+            canvas.drawRect(mLeft,mTop,mRight,mBottom,paint);
         }
     }
 }

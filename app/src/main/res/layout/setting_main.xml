@@ -100,15 +100,15 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/TextLanguage"
+                    android:id="@+id/Texttheme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="한글/영어 설정"
+                    android:text="밤/낮 설정"
                     android:textSize="20dp" />
 
                 <Switch
-                    android:id="@+id/switch_language"
+                    android:id="@+id/switch_theme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

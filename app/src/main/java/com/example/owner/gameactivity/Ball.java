@@ -6,7 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 
 public class Ball implements DrawableItem {
-    public int color;
+    public int color =4;
     private float mX;
     private float mY;
     private float mSpeedX;
