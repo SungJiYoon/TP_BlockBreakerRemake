@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     boolean vibrationtmp = false;
     boolean bgmtmp = false;
     boolean languagetmp = false;//true는 한글,false는 영어
+    MediaPlayer main_mp = null; //게임화면 배경음악
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
