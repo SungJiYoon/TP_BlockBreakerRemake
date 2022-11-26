@@ -1,10 +1,12 @@
 package com.example.owner.gameactivity;
 
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
 public class Ball implements DrawableItem {
+    public int color;
     private float mX;
     private float mY;
     private float mSpeedX;
@@ -36,7 +38,9 @@ public class Ball implements DrawableItem {
         mSpeedY = speedY;
     }
 
-    public Ball(float radius, float initialX, float initialY){
+
+
+    public Ball(float radius, float initialX, float initialY, int xcolor){
         mRadius = radius;
         mSpeedX = radius /5;
         mSpeedY = radius/5;
@@ -47,15 +51,52 @@ public class Ball implements DrawableItem {
         mInitialSpeedY = mSpeedY;
         mInitialX = mX;
         mInitialY = mY;
+
+        xcolor = color; //회색인 이유?  is never used 좀 찾아보기
     }
     public void move(){
         mX += mSpeedX;
         mY += mSpeedY;
     }
+    public void red(){
+        color = 1;
+    }
+    public void yellow(){
+        color = 2;
+    }
+    public void blue(){
+        color = 3;
+    }
+    public void white(){
+        color = 4;
+    }
+
     public void draw(Canvas canvas, Paint paint){
-        paint.setColor(Color.WHITE);
-        paint.setStyle(Paint.Style.FILL);
-        canvas.drawCircle(mX,mY,mRadius, paint);
+
+//        Intent intent = getIntent();
+//        colortmp = intent.getIntExtra("colortmp",2);
+
+        if(color == 1){
+            paint.setColor(Color.RED);
+            paint.setStyle(Paint.Style.FILL);
+            canvas.drawCircle(mX,mY,mRadius, paint);
+        }
+        else if(color == 2){
+            paint.setColor(Color.YELLOW);
+            paint.setStyle(Paint.Style.FILL);
+            canvas.drawCircle(mX,mY,mRadius, paint);
+        }
+        else if(color == 3){
+            paint.setColor(Color.BLUE);
+            paint.setStyle(Paint.Style.FILL);
+            canvas.drawCircle(mX,mY,mRadius, paint);
+        }
+        else{
+            paint.setColor(Color.WHITE);
+            paint.setStyle(Paint.Style.FILL);
+            canvas.drawCircle(mX,mY,mRadius, paint);
+
+        }
     }
 
     public void reset(){
