@@ -378,6 +378,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         return true; // false로 설정할경우 프로그래머가 직접 폐기해야함
     }
 
+    //저장
     @Override
     public void onSurfaceTextureUpdated(SurfaceTexture surface) {
 
