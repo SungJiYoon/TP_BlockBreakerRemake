@@ -42,7 +42,7 @@
                     android:gravity="center_horizontal">
 
                     <TextView
-                        android:text="아이디 : "
+                        android:text="Id : "
                         android:textSize="20dp" />
 
                     <EditText
@@ -50,7 +50,7 @@
                         android:id="@+id/num"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="이름을 입력하세요."
+                        android:hint="Id"
                         android:inputType="text"
                         android:textSize="15dp"
                         tools:ignore="TouchTargetSizeCheck" />
@@ -60,13 +60,13 @@
                 <TableRow android:gravity="center_horizontal">
 
                     <TextView
-                        android:text="닉네임 : "
+                        android:text="Nickname : "
                         android:textSize="20dp" />
 
                     <EditText
 
                         android:id="@+id/name"
-                        android:hint="이름을 입력하세요."
+                        android:hint="Nickname"
                         android:inputType="text"
                         android:textSize="15dp"
                         tools:ignore="TouchTargetSizeCheck" />
@@ -75,12 +75,12 @@
                 <TableRow android:gravity="center_horizontal">
 
                     <TextView
-                        android:text="비밀번호 : "
+                        android:text="Password : "
                         android:textSize="20dp" />
 
                     <EditText
                         android:id="@+id/password"
-                        android:hint="비밀번호를 입력하세요."
+                        android:hint="Password"
                         android:inputType="textPassword"
                         android:textSize="15dp"
                         tools:ignore="TouchTargetSizeCheck" />
@@ -90,12 +90,12 @@
                 <TableRow android:gravity="center_horizontal">
 
                     <TextView
-                        android:text="비밀번호 확인 : "
+                        android:text="Password check : "
                         android:textSize="20dp" />
 
                     <EditText
                         android:id="@+id/passsign"
-                        android:hint="다시 한 번 입력하세요."
+                        android:hint="password check"
                         android:inputType="textPassword"
                         android:textSize="15dp"
                         tools:ignore="TouchTargetSizeCheck" />
@@ -108,11 +108,16 @@
                     android:layout_height="match_parent"
                     android:gravity="center">
 
-                    <Button
-                        android:id="@+id/join"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Join" />
+                    <ImageButton
+                        android:id="@+id/join_btn"
+                        android:layout_width="190dp"
+                        android:layout_height="65dp"
+                        android:layout_gravity="center"
+                        android:background="@android:color/transparent"
+                        android:padding="0sp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/join_b"
+                        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
                 </TableRow>
             </TableLayout>
 
