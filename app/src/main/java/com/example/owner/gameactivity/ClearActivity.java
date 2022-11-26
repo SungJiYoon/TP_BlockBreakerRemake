@@ -38,7 +38,8 @@ public class ClearActivity extends Info {
         boolean isClear = receiveExtras.getBoolean(EXTRA_IS_CLEAR, false);
         int blockCount = receiveExtras.getInt(EXTRA_BLOCK_COUNT, 0);
         long clearTime = receiveExtras.getLong(EXTRA_TIME, 0);
-        int nowScore = (100 - blockCount) * 100;
+        int nowScore = (100 - blockCount) * 60000 / Long.valueOf(clearTime*100).intValue();
+
         Log.d(TAG, Integer.toString(nowScore));
 
         if (database != null) {
