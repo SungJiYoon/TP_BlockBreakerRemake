@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class LoginActivity extends Info {
@@ -37,7 +38,7 @@ public class LoginActivity extends Info {
                 Cpass = cursor.getString(2);
             }
 
-            Button loginButton = (Button)findViewById(R.id.login); /*페이지 전환버튼*/
+            ImageButton loginButton = (ImageButton)findViewById(R.id.login_btn); /*페이지 전환버튼*/
             loginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -60,7 +61,7 @@ public class LoginActivity extends Info {
         }
 
 
-        Button signButton = (Button)findViewById(R.id.signup); /*페이지 전환버튼*/
+        ImageButton signButton = (ImageButton)findViewById(R.id.signup_btn); /*페이지 전환버튼*/
         signButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
