@@ -76,6 +76,8 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
             BLOCK_COUNT=60;
         }
 
+
+
         mHandler = new Handler() {
             @Override
         public void handleMessage(Message msg){
@@ -94,6 +96,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                 recvactionbar.setTitle(" 남은 체력 : "+String.valueOf(mLife)+"/5");
             }
         };
+
 
 
     }
@@ -342,10 +345,6 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
          else if(colortmp==3){
               mBall.blue();
           }
-
-
-
-        mBall = new Ball(mBallRadius, width/2, height/2);
         mItemList.add(mBall);
         mLife = 5;
         mGameStartTime = System.currentTimeMillis();

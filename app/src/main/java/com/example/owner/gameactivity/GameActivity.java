@@ -104,22 +104,12 @@ public class GameActivity extends AppCompatActivity {
                 this.onResume();
                 return true;
 
-            case R.id.action_Day:
-                this.image();
-                return true;
+
 
             default:
                 return super.onContextItemSelected(item);
         }
     }
-
-
-    public void image(){
-        int g =0;
-        img.setImageResource(farman[g]);
-    }
-
-
 
     //setting화면으로 전환
 

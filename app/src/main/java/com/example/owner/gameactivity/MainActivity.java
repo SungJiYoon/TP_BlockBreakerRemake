@@ -35,26 +35,18 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), GameActivity.class);
                 Intent twointent  = new Intent(getApplicationContext(), Ball.class);
                 main_mp.stop();
+
                 //Activity전환할때 기본적으로 넘겨야하는 변수들
                 intent.putExtra("leveltmp",leveltmp);
                 intent.putExtra("colortmp",colortmp);
                 intent.putExtra("vibrationtmp",vibrationtmp);
                 intent.putExtra("bgmtmp",bgmtmp);
                 intent.putExtra("languagetmp",languagetmp);
-                twointent.putExtra("colortmp",colortmp);
+
                 startActivity(intent);
-                startActivity(twointent);
+
             }
         });
 
-        Button button = (Button)findViewById(R.id.A); /*페이지 전환버튼*/
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);//액티비티 띄우기
-            }
-        });
     }
 }
