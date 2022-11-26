@@ -4,8 +4,10 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -20,8 +23,8 @@ public class SettingActivity extends AppCompatActivity{
     Button returnStart;
     RadioGroup levelGroup;
     RadioGroup colorGroup;
-    ToggleButton vibrationToggle;
-    ToggleButton bgmToggle;
+    ToggleButton vibrationSwitch;
+    ToggleButton bgmSwitch;
     ToggleButton languageToggle;
 
     //선택이 안되어졌을때는 기본값으로 넘어가도록 변수설정
@@ -36,6 +39,13 @@ public class SettingActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_main);
 
+        Intent outIntent = getIntent();
+        leveltmp = outIntent.getIntExtra("leveltmp",1);
+        colortmp = outIntent.getIntExtra("colortmp",2);
+        vibrationtmp = outIntent.getBooleanExtra("vibrationtmp",true);
+        bgmtmp = outIntent.getBooleanExtra("bgmtmp",true);
+        languagetmp = outIntent.getBooleanExtra("languagetmp",true);
+
         //returnstart버튼이 눌렸을때
         //game을 시작
         returnStart = (Button)findViewById(R.id.returngame);
@@ -43,7 +53,6 @@ public class SettingActivity extends AppCompatActivity{
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(SettingActivity.this,GameActivity.class);
-
                 //Activity전환할때 기본적으로 넘겨야하는 변수들
                 intent.putExtra("leveltmp",leveltmp);
                 intent.putExtra("colortmp",colortmp);
@@ -55,6 +64,7 @@ public class SettingActivity extends AppCompatActivity{
                 finish();
             }
         });
+
 
         //난이도Radio버튼이 눌렸을때
         //난이도를 설정하고 변경
@@ -106,16 +116,17 @@ public class SettingActivity extends AppCompatActivity{
 
         //진동Toggle버튼이 눌렸을때
         //진동On/Off
-        vibrationToggle =(ToggleButton) findViewById(R.id.ToggleVibration);
-        vibrationToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        Switch vibrationSwitch = findViewById(R.id.switch_vibration);
+        vibrationSwitch.setChecked(true);
+        vibrationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
-                    vibrationtmp = true;
+                    vibrationtmp=true;
                     Toast.makeText(getApplicationContext(),"진동ON",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    vibrationtmp = false;
+                    vibrationtmp=false;
                     Toast.makeText(getApplicationContext(),"진동OFF",Toast.LENGTH_SHORT).show();
                 }
             }
@@ -123,25 +134,28 @@ public class SettingActivity extends AppCompatActivity{
 
         //배경음악Toggle버튼이 눌렸을때
         //배경음악On/Off
-        bgmToggle = (ToggleButton) findViewById(R.id.ToggleBgm);
-        bgmToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        Switch bgmSwitch = findViewById(R.id.switch_bgm);
+        bgmSwitch.setChecked(true);
+        bgmSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    bgmtmp=true;
+                if(b) {
+                    bgmtmp = true;
                     Toast.makeText(getApplicationContext(),"배경음악ON",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    bgmtmp=false;
-                    Toast.makeText(getApplicationContext(),"배경음악OFF",Toast.LENGTH_SHORT).show();
+                    bgmtmp = false;
+                    Toast.makeText(getApplicationContext(), "배경음악OFF", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
 
         //언어Toggle버튼이 눌렸을때
         //언어On/Off
-        languageToggle = (ToggleButton) findViewById(R.id.ToggleLanguage);
-        languageToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        Switch languageSwitch = findViewById(R.id.switch_language);
+        languageSwitch.setChecked(true);
+        languageSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
@@ -154,6 +168,8 @@ public class SettingActivity extends AppCompatActivity{
                 }
             }
         });
+
     }
 
 }
+

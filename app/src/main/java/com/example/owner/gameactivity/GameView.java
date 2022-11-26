@@ -46,7 +46,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
     boolean bgmtmp;
     boolean languagetmp;
 
-    public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp, MediaPlayer game_mp, boolean recvbgmtmp,boolean recvlanguagetmp,ActionBar recvactionbar) {
+    public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp, boolean recvbgmtmp,boolean recvlanguagetmp,ActionBar recvactionbar) {
         super(context);
         setSurfaceTextureListener(this);
         setOnTouchListener(this);
@@ -70,12 +70,6 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
             BLOCK_COUNT=60;
         }
 
-        if(bgmtmp == true){
-            game_mp.start();
-        }
-        else{
-            game_mp.pause();
-        }
         
         mHandler = new Handler() {
             @Override
@@ -84,7 +78,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);	        //
                 intent.putExtras(msg.getData());			            //
                 context.startActivity(intent);                              //
-                game_mp.pause(); //다른 Activity로 넘어가면 bgm끄기
+                //game_mp.pause(); //다른 Activity로 넘어가면 bgm끄기
             }
         };
         
