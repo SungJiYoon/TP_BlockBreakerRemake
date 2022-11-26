@@ -11,6 +11,7 @@ import android.graphics.Paint;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Message;
 import android.os.Vibrator;
@@ -52,7 +53,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
     boolean bgmtmp;
     boolean languagetmp;
 
-    public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp, boolean recvbgmtmp,boolean recvlanguagetmp,ActionBar recvactionbar) {
+    public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp,boolean recvbgmtmp,boolean recvlanguagetmp,ActionBar recvactionbar) {
         super(context);
         setSurfaceTextureListener(this);
         setOnTouchListener(this);
@@ -75,9 +76,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         else if(leveltmp==3){
             BLOCK_COUNT=60;
         }
-
-
-
+        
         mHandler = new Handler() {
             @Override
         public void handleMessage(Message msg){
@@ -85,7 +84,6 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);	        //
                 intent.putExtras(msg.getData());			            //
                 context.startActivity(intent);                              //
-                //game_mp.pause(); //다른 Activity로 넘어가면 bgm끄기
             }
         };
         
@@ -98,25 +96,17 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         };
 
 
-
     }
-
-//    int []farman = new int[]{R.drawable.iphone2};
-//    ImageView img;
 
 
     public void start(){
         mThread = new Thread(new Runnable() {
-
             @Override
             public void run() {
 
                 Paint paint = new Paint();
                 paint.setStyle(Paint.Style.FILL);
                 paint.setColor(Color.RED);
-
-
-
 
                 while(true){
                     long startTime = System.currentTimeMillis();
@@ -241,8 +231,6 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                             }
                             mBall.setSpeedY(ballSpeedY);
                             mBall.setSpeedX(ballSpeedX);
-
-
 
 
                         }
@@ -378,7 +366,6 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         return true; // false로 설정할경우 프로그래머가 직접 폐기해야함
     }
 
-    //저장
     @Override
     public void onSurfaceTextureUpdated(SurfaceTexture surface) {
 

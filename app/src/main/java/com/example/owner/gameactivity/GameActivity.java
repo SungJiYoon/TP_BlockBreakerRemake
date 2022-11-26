@@ -32,8 +32,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
+        
         //최종적으로 받아서 영향을 받는 GameActivity에서 모든 변수를 getExtra해줌
         Intent intent = getIntent();
         leveltmp = intent.getIntExtra("leveltmp",1);
@@ -73,7 +72,6 @@ public class GameActivity extends AppCompatActivity {
     }
     
     //메뉴바 추가,활성화
-    //res.menu.menu_main을 추가
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main,menu);
@@ -104,13 +102,10 @@ public class GameActivity extends AppCompatActivity {
                 this.onResume();
                 return true;
 
-
-
             default:
                 return super.onContextItemSelected(item);
         }
     }
-
     //setting화면으로 전환
 
     @Override
@@ -124,5 +119,4 @@ public class GameActivity extends AppCompatActivity {
         super.onResume();
         mView.start();
     }
-
 }
