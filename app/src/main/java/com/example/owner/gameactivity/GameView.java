@@ -166,7 +166,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                             mLife--;
                           //남은 체력을 출력해줄수있게 handler에 메세지보냄
                             mLifeHandler.sendMessage(new Message());
-                            mBall.reset();
+                            mBall.reset(); //초기화
                             }else{
                                 unlockCanvasAndPost(canvas);
                                 Message message = Message.obtain();
