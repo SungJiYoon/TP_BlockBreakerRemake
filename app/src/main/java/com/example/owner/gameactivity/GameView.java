@@ -79,16 +79,6 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         }
 
 
-//        if(colortmp == 1){
-//            mBall.red();
-//        }
-//        else if(colortmp==2){
-//            mBall.yellow();
-//        }
-//        else if(colortmp==3){
-//            mBall.blue();
-//        }
-
 
         mHandler = new Handler() {
             @Override

@@ -27,16 +27,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), GameActivity.class);
-                Intent twointent  = new Intent(getApplicationContext(), Ball.class);
+
                 //Activity전환할때 기본적으로 넘겨야하는 변수들
                 intent.putExtra("leveltmp",leveltmp);
                 intent.putExtra("colortmp",colortmp);
                 intent.putExtra("vibrationtmp",vibrationtmp);
                 intent.putExtra("bgmtmp",bgmtmp);
                 intent.putExtra("languagetmp",languagetmp);
-                twointent.putExtra("colortmp",colortmp);
+
                 startActivity(intent);
-                startActivity(twointent);
+
             }
         });
     }

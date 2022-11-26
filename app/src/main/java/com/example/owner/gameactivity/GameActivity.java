@@ -27,8 +27,8 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.setting_main);
-        ImageView img = (ImageView)findViewById(R.id.imageView);
+//        setContentView(R.layout.setting_main);
+//        ImageView img = (ImageView)findViewById(R.id.imageView);
 
         //최종적으로 받아서 영향을 받는 GameActivity에서 모든 변수를 getExtra해줌
         Intent intent = getIntent();
@@ -73,9 +73,7 @@ public class GameActivity extends AppCompatActivity {
                 this.onResume();
                 return true;
 
-            case R.id.action_Day:
-                this.image();
-                return true;
+
 
             default:
                 return super.onContextItemSelected(item);
@@ -83,10 +81,6 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
-    public void image(){
-        int g =0;
-        img.setImageResource(farman[g]);
-    }
 
 
 
