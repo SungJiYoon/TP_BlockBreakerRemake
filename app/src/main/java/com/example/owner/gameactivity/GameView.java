@@ -39,15 +39,15 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
     //타이틀바 선언
     ActionBar actionBar;
     Vibrator vibration;
-    
+
     //전역적으로 사용될 변수
     int leveltmp;
     int colortmp;
     boolean vibrationtmp;
     boolean bgmtmp;
-    boolean languagetmp;
+    boolean themetmp;
 
-    public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp,Vibrator vibratortmp, boolean recvbgmtmp,boolean recvlanguagetmp,ActionBar recvactionbar) {
+    public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp,Vibrator vibratortmp, boolean recvbgmtmp,boolean recvthemetmp,ActionBar recvactionbar) {
         super(context);
         setSurfaceTextureListener(this);
         setOnTouchListener(this);
@@ -57,7 +57,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         colortmp = recvcolortmp;
         vibrationtmp = recvvibrationtmp;
         bgmtmp = recvbgmtmp;
-        languagetmp = recvlanguagetmp;
+        themetmp = recvthemetmp;
         actionBar = recvactionbar;
         vibration = vibratortmp;
         int num = 0;
@@ -119,6 +119,14 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
 
                         Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.iphone2);
                         canvas.drawBitmap(b,0,0,null);
+                    if(themetmp == true){
+                        Bitmap c = BitmapFactory.decodeResource(getResources(), R.drawable.iphone2);
+                        canvas.drawBitmap(c,0,0,null);
+                    }
+                    else if(themetmp == false){
+                        Bitmap d = BitmapFactory.decodeResource(getResources(), R.drawable.iphone3);
+                        canvas.drawBitmap(d,0,0,null);
+                    }
 
                         float padLeft = mTouchedX - mPadHalfWidth;
                         float padRight = mTouchedX + mPadHalfWidth;
@@ -139,6 +147,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                         }
 
                         //바닥에 떨어진 판정
+
                         if(ballBottom > getHeight()){
                             if(vibrationtmp == true){
                                 vibration.vibrate(500); // 0.5초간 진동

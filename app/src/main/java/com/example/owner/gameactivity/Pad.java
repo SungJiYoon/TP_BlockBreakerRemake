@@ -21,9 +21,18 @@ public class Pad implements DrawableItem{
     }
 
     public void draw(Canvas canvas, Paint paint){
-        paint.setColor(Color.BLACK);
+        paint.setARGB(10, 000, 000, 000);
         paint.setStyle(Paint.Style.FILL);
+        paint.setStrokeCap(Paint.Cap.ROUND);
+        paint.setStrokeJoin(Paint.Join.ROUND);
         canvas.drawRect(mLeft,mTop,mRight,mBottom, paint);
+
+        // 테두리선 부분 그리기
+        paint.setColor(Color.GREEN);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(10f);
+
+        canvas.drawRect(mLeft,mTop,mRight,mBottom,paint);
     }
 
     public float getTop(){
