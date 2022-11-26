@@ -25,7 +25,7 @@ public class GameActivity extends AppCompatActivity {
     int colortmp;
     boolean vibrationtmp;
     boolean bgmtmp;
-    boolean languagetmp;
+    boolean themetmp;
 
     int []farman = new int[]{R.drawable.iphone2};
     ImageView img;
@@ -39,14 +39,14 @@ public class GameActivity extends AppCompatActivity {
         colortmp = intent.getIntExtra("colortmp",2);
         vibrationtmp = intent.getBooleanExtra("vibrationtmp",true);
         bgmtmp = intent.getBooleanExtra("bgmtmp",true);
-        languagetmp = intent.getBooleanExtra("languagetmp",true);
+        themetmp = intent.getBooleanExtra("themetmp",true);
         
         //타이틀바를 파라미터로 넘겨줌
         actionBar = getSupportActionBar();
         actionBar.setTitle(" 남은 체력 : 1/1");
         
       //받은 변수들을 GameView에 파라미터로 넘겨줌
-        mView = new GameView(this,leveltmp,colortmp,vibrationtmp,bgmtmp,languagetmp,actionBar);
+        mView = new GameView(this,leveltmp,colortmp,vibrationtmp,bgmtmp,themetmp,actionBar);
         setContentView(mView);
 
         if(bgmtmp == true){
@@ -89,7 +89,7 @@ public class GameActivity extends AppCompatActivity {
                 myIntent.putExtra("colortmp",colortmp);
                 myIntent.putExtra("vibrationtmp",vibrationtmp);
                 myIntent.putExtra("bgmtmp",bgmtmp);
-                myIntent.putExtra("languagetmp",languagetmp);
+                myIntent.putExtra("themetmp",themetmp);
                 startActivity(myIntent);
                 finish();
                 return true;

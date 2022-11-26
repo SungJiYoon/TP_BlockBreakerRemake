@@ -29,10 +29,10 @@ public class SettingActivity extends AppCompatActivity{
 
     //선택이 안되어졌을때는 기본값으로 넘어가도록 변수설정
     int leveltmp = 1;//1은 상,2은 중,3은 하
-    int colortmp = 2;//1은 빨간색,2은 노란색,3은 파란색
+    int colortmp = 4;//1은 빨간색,2은 노란색,3은 파란색, 4흰색
     boolean vibrationtmp = true;
     boolean bgmtmp = true;
-    boolean languagetmp = true;//true는 한글,false는 영어
+    boolean themetmp = true;//true는 한글,false는 영어
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +41,10 @@ public class SettingActivity extends AppCompatActivity{
 
         Intent outIntent = getIntent();
         leveltmp = outIntent.getIntExtra("leveltmp",1);
-        colortmp = outIntent.getIntExtra("colortmp",2);
+        colortmp = outIntent.getIntExtra("colortmp",1);
         vibrationtmp = outIntent.getBooleanExtra("vibrationtmp",true);
         bgmtmp = outIntent.getBooleanExtra("bgmtmp",true);
-        languagetmp = outIntent.getBooleanExtra("languagetmp",true);
+        themetmp = outIntent.getBooleanExtra("themetmp",true);
 
         //returnstart버튼이 눌렸을때
         //game을 시작
@@ -58,7 +58,7 @@ public class SettingActivity extends AppCompatActivity{
                 intent.putExtra("colortmp",colortmp);
                 intent.putExtra("vibrationtmp",vibrationtmp);
                 intent.putExtra("bgmtmp",bgmtmp);
-                intent.putExtra("languagetmp",languagetmp);
+                intent.putExtra("themetmp",themetmp);
 
                 startActivity(intent);
                 finish();
@@ -109,7 +109,9 @@ public class SettingActivity extends AppCompatActivity{
                         colortmp=3;
                         Toast.makeText(getApplicationContext(),"파란색",Toast.LENGTH_SHORT).show();
                         break;
-
+                    default:
+                        colortmp = 4;
+                        break;
                 }
             }
         });
@@ -153,17 +155,17 @@ public class SettingActivity extends AppCompatActivity{
 
         //언어Toggle버튼이 눌렸을때
         //언어On/Off
-        Switch languageSwitch = findViewById(R.id.switch_language);
-        languageSwitch.setChecked(true);
-        languageSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        Switch themeSwitch = findViewById(R.id.switch_theme);
+        themeSwitch.setChecked(true);
+        themeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
-                    languagetmp=true;
+                    themetmp=true;
                     Toast.makeText(getApplicationContext(),"한글설정",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    languagetmp=false;
+                    themetmp=false;
                     Toast.makeText(getApplicationContext(),"영어설정",Toast.LENGTH_SHORT).show();
                 }
             }

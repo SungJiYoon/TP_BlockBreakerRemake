@@ -51,9 +51,9 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
     int colortmp;
     boolean vibrationtmp;
     boolean bgmtmp;
-    boolean languagetmp;
+    boolean themetmp;
 
-    public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp,boolean recvbgmtmp,boolean recvlanguagetmp,ActionBar recvactionbar) {
+    public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp,boolean recvbgmtmp,boolean recvthemetmp,ActionBar recvactionbar) {
         super(context);
         setSurfaceTextureListener(this);
         setOnTouchListener(this);
@@ -63,7 +63,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         colortmp = recvcolortmp;
         vibrationtmp = recvvibrationtmp;
         bgmtmp = recvbgmtmp;
-        languagetmp = recvlanguagetmp;
+        themetmp = recvthemetmp;
         actionBar = recvactionbar;
         int num = 0;
         //난이도 설정 1이면 상(블록100), 2이면 중(블록80),3이면 하(블록60)
@@ -129,6 +129,14 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
 
                         Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.iphone2);
                         canvas.drawBitmap(b,0,0,null);
+                    if(themetmp == true){
+                        Bitmap c = BitmapFactory.decodeResource(getResources(), R.drawable.iphone2);
+                        canvas.drawBitmap(c,0,0,null);
+                    }
+                    else if(themetmp == false){
+                        Bitmap d = BitmapFactory.decodeResource(getResources(), R.drawable.iphone3);
+                        canvas.drawBitmap(d,0,0,null);
+                    }
 
 
 
