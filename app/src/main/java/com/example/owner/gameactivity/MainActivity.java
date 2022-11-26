@@ -13,9 +13,9 @@ public class MainActivity extends AppCompatActivity {
     //전역적으로 사용될 변수
     int leveltmp = 1;//1은 상,2은 중,3은 하
     int colortmp = 2;//1은 빨간색,2은 노란색,3은 파란색
-    boolean vibrationtmp = false;
-    boolean bgmtmp = false;
-    boolean languagetmp = false;//true는 한글,false는 영어
+    boolean vibrationtmp = true;
+    boolean bgmtmp = true;
+    boolean languagetmp = true;//true는 한글,false는 영어
     MediaPlayer main_mp = null; //게임화면 배경음악
     
     @Override

@@ -37,9 +37,9 @@ public class GameActivity extends AppCompatActivity {
         Intent intent = getIntent();
         leveltmp = intent.getIntExtra("leveltmp",1);
         colortmp = intent.getIntExtra("colortmp",2);
-        vibrationtmp = intent.getBooleanExtra("vibrationtmp",false);
-        bgmtmp = intent.getBooleanExtra("bgmtmp",false);
-        languagetmp = intent.getBooleanExtra("languagetmp",false);
+        vibrationtmp = intent.getBooleanExtra("vibrationtmp",true);
+        bgmtmp = intent.getBooleanExtra("bgmtmp",true);
+        languagetmp = intent.getBooleanExtra("languagetmp",true);
         
         //타이틀바를 파라미터로 넘겨줌
         actionBar = getSupportActionBar();
