@@ -21,7 +21,9 @@
 		<activity android:name="com.example.owner.gameactivity.GameActivity"></activity>
         <activity android:name="com.example.owner.gameactivity.ClearActivity"></activity>
         <activity android:name="com.example.owner.gameactivity.SettingActivity"></activity>
-	
+        <activity android:name="com.example.owner.gameactivity.Info"></activity>
+        <activity android:name="com.example.owner.gameactivity.SignActivity"></activity>
+        <activity android:name="com.example.owner.gameactivity.LoginActivity"></activity>
 	</application>
 
 </manifest>
