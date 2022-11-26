@@ -27,14 +27,13 @@
 
             <TextView
                 android:id="@+id/empty"
-                android:layout_width="match_parent"
-                android:layout_height="318dp"
-                android:layout_weight="1" />
+                android:layout_width="364dp"
+                android:layout_height="307dp" />
 
             <EditText
                 android:id="@+id/LogId"
                 android:layout_width="match_parent"
-                android:layout_height="128dp"
+                android:layout_height="66dp"
                 android:layout_gravity="center"
                 android:ems="10"
                 android:hint="Id"
@@ -45,29 +44,38 @@
             <EditText
                 android:id="@+id/LogPass"
                 android:layout_width="match_parent"
-                android:layout_height="92dp"
+                android:layout_height="66dp"
                 android:layout_gravity="center"
-                android:hint="PassWord"
+                android:hint="Password"
                 android:inputType="textPassword"
                 android:scaleType="centerCrop"
                 android:textSize="20dp" />
 
-            <Button
-                android:id="@+id/login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageButton
+                android:id="@+id/login_btn"
+                android:layout_width="190dp"
+                android:layout_height="65dp"
                 android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:padding="0sp"
                 android:scaleType="centerCrop"
-                android:text="login" />
+                app:srcCompat="@drawable/login_b"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-            <Button
-                android:id="@+id/signup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageButton
+                android:id="@+id/signup_btn"
+                android:layout_width="190dp"
+                android:layout_height="65dp"
                 android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:padding="0sp"
                 android:scaleType="centerCrop"
-                android:text="signup" />
+                app:srcCompat="@drawable/signup_b"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
         </LinearLayout>
+
+
 
     </FrameLayout>
 

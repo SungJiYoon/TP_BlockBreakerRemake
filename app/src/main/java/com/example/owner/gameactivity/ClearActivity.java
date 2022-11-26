@@ -89,8 +89,6 @@ public class ClearActivity extends Info {
         s4.setText("4. "+ranks[3]);
         s5.setText("5. "+ranks[4]);
 
-
-
         gameStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

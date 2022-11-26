@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 
@@ -21,7 +22,7 @@ public class SignActivity extends Info {
         PASSSIGN = (EditText) findViewById(R.id.passsign);
         NUM = (EditText) findViewById(R.id.num);
 
-        Button join = (Button) findViewById(R.id.join);
+        ImageButton join = (ImageButton) findViewById(R.id.join_btn);
         join.setOnClickListener(new View.OnClickListener() {
 
             @Override
