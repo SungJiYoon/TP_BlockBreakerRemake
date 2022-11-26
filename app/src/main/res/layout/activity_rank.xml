@@ -11,13 +11,13 @@
     android:paddingTop="16dp"
     tools:context="com.example.owner.gameactivity.ClearActivity">
 
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/iphone2" />
-
 
     <TextView
         android:id="@+id/ranktextScore"
@@ -26,7 +26,7 @@
         android:layout_alignTop="@+id/imageView3"
         android:layout_alignEnd="@+id/imageView3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="210dp"
+        android:layout_marginTop="123dp"
         android:layout_marginEnd="169dp"
         android:text="점수"
         android:textAppearance="?android:attr/textAppearanceMedium"
