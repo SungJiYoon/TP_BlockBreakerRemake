@@ -39,7 +39,7 @@ public class LoginActivity extends Info {
                     Id = idText.getText().toString();
                     Pass = passText.getText().toString();
                     if (Id.equals(Cnum) && Pass.equals(Cpass)) {
-                        Intent gameStart = new Intent(getApplication(), GameActivity.class); //로그인되면 메인으로 넘어감
+                        Intent gameStart = new Intent(getApplication(), MainActivity.class); //로그인되면 메인으로 넘어감
                         gameStart.putExtra("splash", "splash");
                         startActivity(gameStart);
                         Toast.makeText(getApplicationContext(), Cname + "님 환영합니다.",
