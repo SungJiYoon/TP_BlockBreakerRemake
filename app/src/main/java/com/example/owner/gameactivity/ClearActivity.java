@@ -20,7 +20,6 @@ public class ClearActivity extends Info {
     public static final String EXTRA_TIME = "EXTRA.TIME";
     private static final String TAG = "ClearActivity";
 
-
     @SuppressLint("StringFormatMatches")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,7 @@ public class ClearActivity extends Info {
         boolean isClear = receiveExtras.getBoolean(EXTRA_IS_CLEAR, false);
         int blockCount = receiveExtras.getInt(EXTRA_BLOCK_COUNT, 0);
         long clearTime = receiveExtras.getLong(EXTRA_TIME, 0);
-        int nowScore = (100 - blockCount) * 60000 / Long.valueOf(clearTime*100).intValue();
+        int nowScore = (100 - blockCount) * (100 - blockCount) * 10;
 
         Log.d(TAG, Integer.toString(nowScore));
 
