@@ -52,7 +52,7 @@ public class LoginActivity extends Info {
                                 Toast.LENGTH_SHORT).show();
                         main_mp.stop();
                     } else {
-                        Toast.makeText(getApplicationContext(), "정확한 정보를 입력하세요.",
+                        Toast.makeText(getApplicationContext(), "없는 아이디거나 패스워드가 틀렸습니다.",
                                 Toast.LENGTH_SHORT).show();
                     }
                 }
