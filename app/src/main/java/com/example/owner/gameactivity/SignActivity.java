@@ -42,13 +42,13 @@ public class SignActivity extends Info {
                 }
 
                 if (Tname.length()<2) {
-                    Toast.makeText(getApplicationContext(), "닉네임을 정확하게 입력해주세요.",
+                    Toast.makeText(getApplicationContext(), "닉네임을 2자리 이상 입력해주세요.",
                             Toast.LENGTH_SHORT).show();
                 } else if (Tpass.length() <4) {
                     Toast.makeText(getApplicationContext(), "비밀번호를 4자리 이상 입력하세요.",
                             Toast.LENGTH_SHORT).show();
-                } else if (Tpasssign.length() <4) {
-                    Toast.makeText(getApplicationContext(), "비밀번호를 입력하세요.",
+                } else if (Tpasssign.equals(Tpass)==false) {
+                    Toast.makeText(getApplicationContext(), "비밀번호가 동일하지 않습니다.",
                             Toast.LENGTH_SHORT).show();
                 } else if (Tnum.length() <4 || Tnum.equals(Cnum)) {
                     Toast.makeText(getApplicationContext(), "이미 등록된 아이디거나 정확하지 않습니다.",
