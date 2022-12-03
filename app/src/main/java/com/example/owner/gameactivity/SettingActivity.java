@@ -32,7 +32,7 @@ public class SettingActivity extends AppCompatActivity{
     int colortmp = 4;//1은 빨간색,2은 노란색,3은 파란색, 4흰색
     boolean vibrationtmp = true;
     boolean bgmtmp = true;
-    boolean themetmp = true;//true는 한글,false는 영어
+    boolean themetmp = true;//true는 낮,false는 밤
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,11 +162,11 @@ public class SettingActivity extends AppCompatActivity{
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
                     themetmp=true;
-                    Toast.makeText(getApplicationContext(),"한글설정",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"테마 : 낮",Toast.LENGTH_SHORT).show();
                 }
                 else{
                     themetmp=false;
-                    Toast.makeText(getApplicationContext(),"영어설정",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"테마 : 밤",Toast.LENGTH_SHORT).show();
                 }
             }
         });
