@@ -47,7 +47,7 @@ public class GameActivity extends AppCompatActivity {
 
         //타이틀바를 파라미터로 넘겨줌
         actionBar = getSupportActionBar();
-        actionBar.setTitle(" 남은 체력 : 1/1");
+        actionBar.setTitle(" 남은 체력 : 5/5");
         
       //받은 변수들을 GameView에 파라미터로 넘겨줌
         mView = new GameView(this,leveltmp,colortmp,vibrationtmp,vibrator,bgmtmp,themetmp,actionBar);
