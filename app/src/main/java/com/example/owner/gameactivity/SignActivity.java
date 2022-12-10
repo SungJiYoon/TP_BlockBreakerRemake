@@ -31,14 +31,12 @@ public class SignActivity extends Info {
                 Tpass = PASS.getText().toString();
                 Tpasssign = PASSSIGN.getText().toString();
                 Tid = ID.getText().toString();
-                Cursor cursor = database.rawQuery("SELECT name, id FROM MEMBER", null);
+                Cursor cursor = database.rawQuery("SELECT id FROM MEMBER", null);
                 int count = cursor.getCount();
 
                 for(int i=0;i<count;i++) {
                     cursor.moveToNext();
-                    Cname = cursor.getString(0);
-                    Cid = cursor.getString(1);
-
+                    Cid = cursor.getString(0);
                 }
 
                 if (Tname.length()<2) {
