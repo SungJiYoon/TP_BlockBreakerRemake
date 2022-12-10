@@ -11,10 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Info extends AppCompatActivity {
     SQLiteDatabase database;
     CustomerDatabaseHelper databaseHelper;
-    String login_tableName = "MEMBER";
-    String rank_tableName = "RANK";
+    String login_table = "MEMBER";
+    String rank_table = "RANK";
     String databaseName = "blockblock";
-    String Cnum;
+    String Cid;
     String Cpass;
     String Cname;
     String Cscore;
@@ -34,7 +34,6 @@ public class Info extends AppCompatActivity {
             } else if (database != null) {
                 //Toast.makeText(getApplication(), "이미 디비열렸음", Toast.LENGTH_SHORT).show();
             }
-
         } catch (
                 Exception e
         )
@@ -45,22 +44,21 @@ public class Info extends AppCompatActivity {
 
         try {
             if (database != null) {
-                database.execSQL("CREATE TABLE if not exists " + login_tableName + "(" +
+
+                database.execSQL("CREATE TABLE if not exists " + login_table + "(" +
                         "_id integer PRIMARY KEY autoincrement," +
                         "name text," +
                         "pass text," +
-                        "passCheck text," +
-                        "num text" +
+                        "id text" +
                         ")");
                 //Toast.makeText(getApplication(), "Table :" + login_tableName + "이 생성되었습니다.", Toast.LENGTH_SHORT).show();
 
-                database.execSQL("CREATE TABLE if not exists " + rank_tableName + "(" +
+                database.execSQL("CREATE TABLE if not exists " + rank_table + "(" +
                         "_id integer PRIMARY KEY autoincrement," +
                         "score integer" +
                         ")");
                 //.makeText(getApplication(), "Table :" + rank_tableName + "이 생성되었습니다.", Toast.LENGTH_SHORT).show();
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
