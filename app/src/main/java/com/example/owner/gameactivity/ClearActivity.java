@@ -66,6 +66,7 @@ public class ClearActivity extends Info {
         TextView textBlockCount = (TextView)findViewById(R.id.textBlockCount);
         TextView textClearTime = (TextView)findViewById(R.id.textClearTime);
         Button gameStart = (Button)findViewById(R.id.buttonGameStart);
+        Button mainStart = (Button)findViewById(R.id.buttonMainStart);
 
         TextView s1 = (TextView) findViewById(R.id.score1);
         TextView s2 = (TextView) findViewById(R.id.score2);
@@ -97,6 +98,14 @@ public class ClearActivity extends Info {
             }
         });
 
+        mainStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ClearActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+            }
+        });
 
 
     }
