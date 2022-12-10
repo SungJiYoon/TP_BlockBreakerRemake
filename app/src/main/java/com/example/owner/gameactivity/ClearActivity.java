@@ -66,6 +66,8 @@ public class ClearActivity extends Info {
         TextView textBlockCount = (TextView)findViewById(R.id.textBlockCount);
         TextView textClearTime = (TextView)findViewById(R.id.textClearTime);
         Button gameStart = (Button)findViewById(R.id.buttonGameStart);
+        Button gameMenu = (Button)findViewById(R.id.buttonMainMenu);
+
 
         TextView s1 = (TextView) findViewById(R.id.score1);
         TextView s2 = (TextView) findViewById(R.id.score2);
@@ -91,9 +93,18 @@ public class ClearActivity extends Info {
         gameStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ClearActivity.this, GameActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                startActivity(intent);
+                Intent intentRetry = new Intent(ClearActivity.this, GameActivity.class);
+                intentRetry.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intentRetry);
+            }
+        });
+
+        gameMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentMenu = new Intent(ClearActivity.this, MainActivity.class);
+                intentMenu.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intentMenu);
             }
         });
 
