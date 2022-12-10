@@ -42,7 +42,7 @@ public class ClearActivity extends Info {
         Log.d(TAG, Integer.toString(nowScore));
 
         if (database != null) {
-            database.execSQL("INSERT INTO " + rank_tableName + "(score) VALUES" +
+            database.execSQL("INSERT INTO " + rank_table + "(score) VALUES" +
                     "(" + "'" + nowScore + "'" + ")");
 
             Cursor cursor = database.rawQuery("SELECT * FROM RANK ORDER BY score desc", null);
