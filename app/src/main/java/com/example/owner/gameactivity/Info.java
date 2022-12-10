@@ -34,6 +34,7 @@ public class Info extends AppCompatActivity {
             } else if (database != null) {
                 //Toast.makeText(getApplication(), "이미 디비열렸음", Toast.LENGTH_SHORT).show();
             }
+
         } catch (
                 Exception e
         )
@@ -44,11 +45,11 @@ public class Info extends AppCompatActivity {
 
         try {
             if (database != null) {
-
                 database.execSQL("CREATE TABLE if not exists " + login_table + "(" +
                         "_id integer PRIMARY KEY autoincrement," +
                         "name text," +
                         "pass text," +
+                        "passCheck text," +
                         "id text" +
                         ")");
                 //Toast.makeText(getApplication(), "Table :" + login_tableName + "이 생성되었습니다.", Toast.LENGTH_SHORT).show();
@@ -59,6 +60,7 @@ public class Info extends AppCompatActivity {
                         ")");
                 //.makeText(getApplication(), "Table :" + rank_tableName + "이 생성되었습니다.", Toast.LENGTH_SHORT).show();
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
