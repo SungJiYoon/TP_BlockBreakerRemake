@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     boolean bgmtmp = true;
     boolean themetmp = true;//true는 한글,false는 영어
     MediaPlayer main_mp = null; //게임화면 배경음악
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,16 +27,16 @@ public class MainActivity extends AppCompatActivity {
         main_mp.setLooping(true);
         main_mp.start();
 
-        //게임시작 버튼 클릭시 액티비티 전환
+//게임시작 버튼 클릭시 액티비티 전환
         ImageButton name_rule_btn = (ImageButton) findViewById(R.id.start_btn);
         name_rule_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), GameActivity.class);
-                Intent twointent  = new Intent(getApplicationContext(), Ball.class);
+                Intent twointent = new Intent(getApplicationContext(), Ball.class);
                 main_mp.stop();
 
-                //Activity전환할때 기본적으로 넘겨야하는 변수들
+//Activity전환할때 기본적으로 넘겨야하는 변수들
                 intent.putExtra("leveltmp",leveltmp);
                 intent.putExtra("colortmp",colortmp);
                 intent.putExtra("vibrationtmp",vibrationtmp);
