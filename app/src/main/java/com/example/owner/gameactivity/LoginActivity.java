@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import android.widget.ImageButton;
+
 import android.widget.Toast;
 
 public class LoginActivity extends Info {
@@ -15,6 +17,7 @@ public class LoginActivity extends Info {
     EditText passText;
     String Id;
     String Pass;
+
     MediaPlayer main_mp = null; //게임화면 배경음악
 
     @Override
@@ -71,5 +74,7 @@ public class LoginActivity extends Info {
             }
         });
     }
+
+
 
 }

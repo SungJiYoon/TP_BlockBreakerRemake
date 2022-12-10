@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 
 public class SignActivity extends Info {
+
     EditText NAME,PASS,PASSSIGN,ID;
     String Tname, Tpass, Tpasssign,Tid;
 
@@ -30,6 +32,7 @@ public class SignActivity extends Info {
                 Tname = NAME.getText().toString();
                 Tpass = PASS.getText().toString();
                 Tpasssign = PASSSIGN.getText().toString();
+
                 Tid = ID.getText().toString();
                 Cursor cursor = database.rawQuery("SELECT name, id FROM MEMBER", null);
                 int count = cursor.getCount();
@@ -37,11 +40,12 @@ public class SignActivity extends Info {
                 for(int i=0;i<count;i++) {
                     cursor.moveToNext();
                     Cname = cursor.getString(0);
-                    Cid = cursor.getString(1);
 
+                    Cid = cursor.getString(1);
                 }
 
                 if (Tname.length()<2) {
+
                     Toast.makeText(getApplicationContext(), "닉네임을 2자리 이상 입력해주세요.",
                             Toast.LENGTH_SHORT).show();
                 } else if (Tpass.length() <4) {
