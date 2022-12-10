@@ -1,7 +1,13 @@
 package com.example.owner.gameactivity;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +15,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -16,43 +23,51 @@ public class SettingActivity extends AppCompatActivity{
     Button returnStart;
     RadioGroup levelGroup;
     RadioGroup colorGroup;
-    ToggleButton vibrationToggle;
-    ToggleButton bgmToggle;
+    ToggleButton vibrationSwitch;
+    ToggleButton bgmSwitch;
     ToggleButton languageToggle;
 
     //선택이 안되어졌을때는 기본값으로 넘어가도록 변수설정
     int leveltmp = 1;//1은 상,2은 중,3은 하
-    int colortmp = 2;//1은 빨간색,2은 노란색,3은 파란색
-    boolean vibrationtmp = false;
-    boolean bgmtmp = false;
-    boolean languagetmp = false;//true는 한글,false는 영어
+    int colortmp = 4;//1은 빨간색,2은 노란색,3은 파란색, 4흰색
+    boolean vibrationtmp = true;
+    boolean bgmtmp = true;
+    boolean themetmp = true;//true는 낮,false는 밤
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_main);
 
+        Intent outIntent = getIntent();
+        leveltmp = outIntent.getIntExtra("leveltmp",1);
+        colortmp = outIntent.getIntExtra("colortmp",1);
+        vibrationtmp = outIntent.getBooleanExtra("vibrationtmp",true);
+        bgmtmp = outIntent.getBooleanExtra("bgmtmp",true);
+        themetmp = outIntent.getBooleanExtra("themetmp",true);
+
         //returnstart버튼이 눌렸을때
+        //game을 시작
         returnStart = (Button)findViewById(R.id.returngame);
         returnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent myIntent = new Intent(SettingActivity.this,GameActivity.class);
-
+                Intent intent = new Intent(SettingActivity.this,GameActivity.class);
                 //Activity전환할때 기본적으로 넘겨야하는 변수들
-                myIntent.putExtra("leveltmp",leveltmp);
-                myIntent.putExtra("colortmp",colortmp);
-                myIntent.putExtra("vibrationtmp",vibrationtmp);
-                myIntent.putExtra("bgmtmp",bgmtmp);
-                myIntent.putExtra("languagetmp",languagetmp);
+                intent.putExtra("leveltmp",leveltmp);
+                intent.putExtra("colortmp",colortmp);
+                intent.putExtra("vibrationtmp",vibrationtmp);
+                intent.putExtra("bgmtmp",bgmtmp);
+                intent.putExtra("themetmp",themetmp);
 
-                startActivity(myIntent);
+                startActivity(intent);
                 finish();
             }
         });
-        //game을 시작
+
 
         //난이도Radio버튼이 눌렸을때
+        //난이도를 설정하고 변경
         levelGroup = (RadioGroup) findViewById(R.id.RadioGroupLevel);
         levelGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -74,9 +89,9 @@ public class SettingActivity extends AppCompatActivity{
                 }
             }
         });
-        //난이도를 설정하고 변경
 
         //색상Radio버튼이 눌렸을때
+        //색상을 설정하고 변경
         colorGroup = (RadioGroup) findViewById(R.id.RadioGroupColor);
         colorGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -94,62 +109,69 @@ public class SettingActivity extends AppCompatActivity{
                         colortmp=3;
                         Toast.makeText(getApplicationContext(),"파란색",Toast.LENGTH_SHORT).show();
                         break;
-
+                    default:
+                        colortmp = 4;
+                        break;
                 }
             }
         });
-        //색상을 설정하고 변경
 
         //진동Toggle버튼이 눌렸을때
-        vibrationToggle =(ToggleButton) findViewById(R.id.ToggleVibration);
-        vibrationToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        //진동On/Off
+        Switch vibrationSwitch = findViewById(R.id.switch_vibration);
+        vibrationSwitch.setChecked(true);
+        vibrationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
-                    vibrationtmp = true;
+                    vibrationtmp=true;
                     Toast.makeText(getApplicationContext(),"진동ON",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    vibrationtmp = false;
+                    vibrationtmp=false;
                     Toast.makeText(getApplicationContext(),"진동OFF",Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        //진동On/Off
 
         //배경음악Toggle버튼이 눌렸을때
-        bgmToggle = (ToggleButton) findViewById(R.id.ToggleBgm);
-        bgmToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        //배경음악On/Off
+        Switch bgmSwitch = findViewById(R.id.switch_bgm);
+        bgmSwitch.setChecked(true);
+        bgmSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    bgmtmp=true;
+                if(b) {
+                    bgmtmp = true;
                     Toast.makeText(getApplicationContext(),"배경음악ON",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    bgmtmp=false;
-                    Toast.makeText(getApplicationContext(),"배경음악OFF",Toast.LENGTH_SHORT).show();
+                    bgmtmp = false;
+                    Toast.makeText(getApplicationContext(), "배경음악OFF", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
-        //배경음악On/Off
 
         //언어Toggle버튼이 눌렸을때
-        languageToggle = (ToggleButton) findViewById(R.id.ToggleLanguage);
-        languageToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        //언어On/Off
+        Switch themeSwitch = findViewById(R.id.switch_theme);
+        themeSwitch.setChecked(true);
+        themeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
-                    languagetmp=true;
-                    Toast.makeText(getApplicationContext(),"한글설정",Toast.LENGTH_SHORT).show();
+                    themetmp=true;
+                    Toast.makeText(getApplicationContext(),"테마 : 낮",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    languagetmp=false;
-                    Toast.makeText(getApplicationContext(),"영어설정",Toast.LENGTH_SHORT).show();
+                    themetmp=false;
+                    Toast.makeText(getApplicationContext(),"테마 : 밤",Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        //언어On/Off
 
     }
+
 }
+

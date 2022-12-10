@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,6 +10,13 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     tools:context="com.example.owner.gameactivity.ClearActivity">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/iphone2" />
 
     <TextView
         android:id="@+id/textTitle"
@@ -24,6 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_below="@id/textTitle"
+        android:layout_marginTop="100dp"
         android:text="남은 블럭"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -33,43 +43,89 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textBlockCount"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:text="클리어 시간"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/buttonGameStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textClearTime"
-        android:layout_centerHorizontal="true"
-        android:text="game_start"/>
 
 
     <TextView
         android:id="@+id/textScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonGameStart"
+        android:layout_alignTop="@+id/imageView3"
+        android:layout_alignEnd="@+id/imageView3"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="210dp"
+        android:layout_marginEnd="161dp"
         android:text="점수"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textHighScore"
+        android:id="@+id/score1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textScore"
+        android:layout_below="@id/textScore"
         android:layout_centerHorizontal="true"
-        android:text="최고 점수"
+        android:layout_marginTop="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/score2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/score1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/score3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/score2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/score4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/score3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/score5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/score4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
-        android:id="@+id/buttonShare"
+        android:id="@+id/buttonGameStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textHighScore"
+        android:layout_below="@+id/score5"
         android:layout_centerHorizontal="true"
-        android:text="공유"/>
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_background"
+        android:text="retry" />
+
+    <Button
+        android:id="@+id/buttonMainStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/score5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="89dp"
+        android:background="@drawable/button_background"
+        android:text="mainstart" />
+
 
 </RelativeLayout>

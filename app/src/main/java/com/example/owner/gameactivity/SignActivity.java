@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 
 public class SignActivity extends Info {
-    EditText NAME,PASS,PASSSIGN,NUM;
-    String Tname, Tpass, Tpasssign,Tnum;
+
+    EditText NAME,PASS,PASSSIGN,ID;
+    String Tname, Tpass, Tpasssign,Tid;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,9 +22,9 @@ public class SignActivity extends Info {
         NAME = (EditText) findViewById(R.id.name);
         PASS = (EditText) findViewById(R.id.password);
         PASSSIGN = (EditText) findViewById(R.id.passsign);
-        NUM = (EditText) findViewById(R.id.num);
+        ID = (EditText) findViewById(R.id.id);
 
-        Button join = (Button) findViewById(R.id.join);
+        ImageButton join = (ImageButton) findViewById(R.id.join_btn);
         join.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -29,34 +32,36 @@ public class SignActivity extends Info {
                 Tname = NAME.getText().toString();
                 Tpass = PASS.getText().toString();
                 Tpasssign = PASSSIGN.getText().toString();
-                Tnum = NUM.getText().toString();
-                Cursor cursor = database.rawQuery("SELECT name, num FROM " + tableName, null);
+
+                Tid = ID.getText().toString();
+                Cursor cursor = database.rawQuery("SELECT name, id FROM MEMBER", null);
                 int count = cursor.getCount();
 
                 for(int i=0;i<count;i++) {
                     cursor.moveToNext();
                     Cname = cursor.getString(0);
-                    Cnum = cursor.getString(1);
 
+                    Cid = cursor.getString(1);
                 }
 
                 if (Tname.length()<2) {
-                    Toast.makeText(getApplicationContext(), "닉네임을 정확하게 입력해주세요.",
+
+                    Toast.makeText(getApplicationContext(), "닉네임을 2자리 이상 입력해주세요.",
                             Toast.LENGTH_SHORT).show();
                 } else if (Tpass.length() <4) {
                     Toast.makeText(getApplicationContext(), "비밀번호를 4자리 이상 입력하세요.",
                             Toast.LENGTH_SHORT).show();
-                } else if (Tpasssign.length() <4) {
-                    Toast.makeText(getApplicationContext(), "비밀번호를 입력하세요.",
+                } else if (Tpasssign.equals(Tpass)==false) {
+                    Toast.makeText(getApplicationContext(), "비밀번호가 동일하지 않습니다.",
                             Toast.LENGTH_SHORT).show();
-                } else if (Tnum.length() <4 || Tnum.equals(Cnum)) {
+                } else if (Tid.length() <4 || Tid.equals(Cid)) {
                     Toast.makeText(getApplicationContext(), "이미 등록된 아이디거나 정확하지 않습니다.",
                             Toast.LENGTH_SHORT).show();
                 } else {
                     try{
                         if (database != null) {
-                            database.execSQL("INSERT INTO " + tableName + "(name, pass, passCheck, num) VALUES" +
-                                    "(" + "'" + Tname + "'" + "," + "'" + Tpass + "'" + "," + "'" + Tpasssign + "'" + "," + "'" +  Tnum + "'" +  ")");
+                            database.execSQL("INSERT INTO " + login_table + "(name, pass, passCheck, id) VALUES" +
+                                    "(" + "'" + Tname + "'" + "," + "'" + Tpass + "'" + "," + "'" + Tpasssign + "'" + "," + "'" +  Tid + "'" +  ")");
                         }
                     } catch (Exception e) {
                         e.printStackTrace();

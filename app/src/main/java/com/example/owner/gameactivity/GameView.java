@@ -2,19 +2,21 @@ package com.example.owner.gameactivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.SurfaceTexture;
 import android.os.Bundle;
 import android.os.Message;
+import android.os.Vibrator;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.TextureView;
 import android.view.View;
-
 import java.util.ArrayList;
 import android.os.Handler;
-import java.util.logging.LogRecord;
 import androidx.appcompat.app.ActionBar;
 
 public class GameView extends TextureView implements TextureView.SurfaceTextureListener,
@@ -36,15 +38,16 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
     private Handler mHandler ;
     //타이틀바 선언
     ActionBar actionBar;
-    
+    Vibrator vibration;
+
     //전역적으로 사용될 변수
     int leveltmp;
     int colortmp;
     boolean vibrationtmp;
     boolean bgmtmp;
-    boolean languagetmp;
+    boolean themetmp;
 
-    public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp,boolean recvbgmtmp,boolean recvlanguagetmp,ActionBar recvactionbar) {
+    public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp,Vibrator vibratortmp, boolean recvbgmtmp,boolean recvthemetmp,ActionBar recvactionbar) {
         super(context);
         setSurfaceTextureListener(this);
         setOnTouchListener(this);
@@ -54,8 +57,10 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         colortmp = recvcolortmp;
         vibrationtmp = recvvibrationtmp;
         bgmtmp = recvbgmtmp;
-        languagetmp = recvlanguagetmp;
+        themetmp = recvthemetmp;
         actionBar = recvactionbar;
+        vibration = vibratortmp;
+        int num = 0;
 
         //난이도 설정 1이면 상(블록100), 2이면 중(블록80),3이면 하(블록60)
         if(leveltmp == 1){
@@ -111,7 +116,17 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                         if(canvas==null){
                             continue; // 캔버스를 잠글수없다면 다시 while문으로 이동
                         }
-                        canvas.drawColor(Color.BLACK); // 화면에 칠함
+
+                        Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.iphone2);
+                        canvas.drawBitmap(b,0,0,null);
+                    if(themetmp == true){
+                        Bitmap c = BitmapFactory.decodeResource(getResources(), R.drawable.iphone2);
+                        canvas.drawBitmap(c,0,0,null);
+                    }
+                    else if(themetmp == false){
+                        Bitmap d = BitmapFactory.decodeResource(getResources(), R.drawable.iphone3);
+                        canvas.drawBitmap(d,0,0,null);
+                    }
 
                         float padLeft = mTouchedX - mPadHalfWidth;
                         float padRight = mTouchedX + mPadHalfWidth;
@@ -134,11 +149,15 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                         //바닥에 떨어진 판정
 
                         if(ballBottom > getHeight()){
+                            if(vibrationtmp == true){
+                                vibration.vibrate(500); // 0.5초간 진동
+                                    Log.v("Vibration", "YES");
+                            }
                             if(mLife > 0){
-                            mLife--;
-                          //남은 체력을 출력해줄수있게 handler에 메세지보냄
-                            mLifeHandler.sendMessage(new Message());
-                            mBall.reset();
+                                mLife--;
+                                //남은 체력을 출력해줄수있게 handler에 메세지보냄
+                                mLifeHandler.sendMessage(new Message());
+                                mBall.reset();
                             }else{
                                 unlockCanvasAndPost(canvas);
                                 Message message = Message.obtain();
@@ -150,9 +169,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                                 //체력이 없을때 종료되기위해 메시지보냄
                                 mHandler.sendMessage(message);
                                 return;
-
                             }
-
                         }
 
                         //블록과 공의 충돌 판정
@@ -302,7 +319,16 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         mPadHalfWidth = width /10;
 
         mBallRadius = width < height? width/40 : height/40;
-        mBall = new Ball(mBallRadius, width/2, height/2);
+        mBall = new Ball(mBallRadius, width/2, height/2, 0);
+         if(colortmp == 1){
+             mBall.red();
+          }
+          else if(colortmp==2){
+              mBall.yellow();
+          }
+         else if(colortmp==3){
+              mBall.blue();
+          }
         mItemList.add(mBall);
         mLife = 5;
         mGameStartTime = System.currentTimeMillis();
