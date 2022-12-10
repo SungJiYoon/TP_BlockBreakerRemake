@@ -29,12 +29,12 @@ public class LoginActivity extends Info {
         main_mp.start();
 
         if (database != null) { //데이터 베이스에 있으면
-            Cursor cursor = database.rawQuery("SELECT name, num, pass FROM " + login_tableName, null);
+            Cursor cursor = database.rawQuery("SELECT name, id, pass FROM MEMBER", null);
             int count = cursor.getCount();
             for(int i=0;i<count;i++) {
                 cursor.moveToNext();
                 Cname = cursor.getString(0);
-                Cnum = cursor.getString(1);
+                Cid = cursor.getString(1);
                 Cpass = cursor.getString(2);
             }
 
@@ -44,7 +44,7 @@ public class LoginActivity extends Info {
                 public void onClick(View v) {
                     Id = idText.getText().toString();
                     Pass = passText.getText().toString();
-                    if (Id.equals(Cnum) && Pass.equals(Cpass)) {
+                    if (Id.equals(Cid) && Pass.equals(Cpass)) {
                         Intent gameStart = new Intent(getApplication(), MainActivity.class); //로그인되면 메인으로 넘어감
                         gameStart.putExtra("splash", "splash");
                         startActivity(gameStart);
