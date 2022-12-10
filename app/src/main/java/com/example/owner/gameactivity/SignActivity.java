@@ -56,8 +56,8 @@ public class SignActivity extends Info {
                 } else {
                     try{
                         if (database != null) {
-                            database.execSQL("INSERT INTO " + login_table + "(name, pass, passCheck, id) VALUES" +
-                                    "(" + "'" + Tname + "'" + "," + "'" + Tpass + "'" + "," + "'" + Tpasssign + "'" + "," + "'" +  Tid + "'" +  ")");
+                            database.execSQL("INSERT INTO " + login_table + "(name, pass, id) VALUES" +
+                                    "(" + "'" + Tname + "'" + "," + "'" + Tpass + "'" + "," + "'" + Tid + "'" +  ")");
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
