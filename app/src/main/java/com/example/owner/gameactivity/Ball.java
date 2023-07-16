@@ -42,8 +42,8 @@ public class Ball implements DrawableItem {
 
     public Ball(float radius, float initialX, float initialY, int xcolor){
         mRadius = radius;
-        mSpeedX = radius /5;
-        mSpeedY = radius/5;
+        mSpeedX = radius /2;
+        mSpeedY = radius/2;
         mX = initialX;
         mY = initialY;
 

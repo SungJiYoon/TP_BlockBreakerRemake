@@ -27,13 +27,13 @@ public class Info extends AppCompatActivity {
         try
         {
             if (database == null) {
-                //  database = openOrCreateDatabase(databaseName, Context.MODE_PRIVATE, null);
                 databaseHelper = new CustomerDatabaseHelper(getApplicationContext(), databaseName, null, 1);
                 database = databaseHelper.getWritableDatabase();
                 //Toast.makeText(getApplication(), "DB :" + databaseName + "이 생성되었습니다.", Toast.LENGTH_SHORT).show();
             } else if (database != null) {
                 //Toast.makeText(getApplication(), "이미 디비열렸음", Toast.LENGTH_SHORT).show();
             }
+
         } catch (
                 Exception e
         )
@@ -44,21 +44,19 @@ public class Info extends AppCompatActivity {
 
         try {
             if (database != null) {
-
                 database.execSQL("CREATE TABLE if not exists " + login_table + "(" +
                         "_id integer PRIMARY KEY autoincrement," +
                         "name text," +
                         "pass text," +
                         "id text" +
                         ")");
-                //Toast.makeText(getApplication(), "Table :" + login_tableName + "이 생성되었습니다.", Toast.LENGTH_SHORT).show();
 
                 database.execSQL("CREATE TABLE if not exists " + rank_table + "(" +
                         "_id integer PRIMARY KEY autoincrement," +
                         "score integer" +
                         ")");
-                //.makeText(getApplication(), "Table :" + rank_tableName + "이 생성되었습니다.", Toast.LENGTH_SHORT).show();
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

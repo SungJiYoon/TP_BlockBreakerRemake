@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.SurfaceTexture;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Message;
 import android.os.Vibrator;
@@ -39,6 +40,8 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
     //타이틀바 선언
     ActionBar actionBar;
     Vibrator vibration;
+    MediaPlayer game_mp;
+
 
     //전역적으로 사용될 변수
     int leveltmp;
@@ -46,8 +49,10 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
     boolean vibrationtmp;
     boolean bgmtmp;
     boolean themetmp;
+    MediaPlayer gamemptmp;
 
-    public GameView(final Context context,int recvleveltmp,int recvcolortmp,boolean recvvibrationtmp,Vibrator vibratortmp, boolean recvbgmtmp,boolean recvthemetmp,ActionBar recvactionbar) {
+
+    public GameView(final Context context, int recvleveltmp, int recvcolortmp, boolean recvvibrationtmp, Vibrator vibratortmp, boolean recvbgmtmp, MediaPlayer gamemptmp,boolean recvthemetmp, ActionBar recvactionbar) {
         super(context);
         setSurfaceTextureListener(this);
         setOnTouchListener(this);
@@ -60,6 +65,7 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
         themetmp = recvthemetmp;
         actionBar = recvactionbar;
         vibration = vibratortmp;
+
         int num = 0;
 
         //난이도 설정 1이면 상(블록100), 2이면 중(블록80),3이면 하(블록60)
@@ -80,6 +86,8 @@ public class GameView extends TextureView implements TextureView.SurfaceTextureL
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);	        //
                 intent.putExtras(msg.getData());			            //
                 context.startActivity(intent);                              //
+                game_mp.stop();
+                game_mp.release();
             }
         };
         

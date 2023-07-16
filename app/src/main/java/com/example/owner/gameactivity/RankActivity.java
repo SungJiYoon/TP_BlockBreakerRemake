@@ -18,6 +18,8 @@ public class RankActivity extends Info{
         String [] ranks = {"0","0","0","0","0"};
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rank);
+        Button gameMenu = (Button)findViewById(R.id.buttonMainMenu);
+
 
         if (database != null) {
             Cursor cursor = database.rawQuery("SELECT * FROM RANK ORDER BY score desc", null);
@@ -47,8 +49,15 @@ public class RankActivity extends Info{
         s4.setText("4. "+ranks[3]);
         s5.setText("5. "+ranks[4]);
 
+        gameMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentMenu = new Intent(RankActivity.this, MainActivity.class);
+                intentMenu.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intentMenu);
+            }
+        });
+
     }
-
-
 
 }

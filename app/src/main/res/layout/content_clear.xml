@@ -118,14 +118,14 @@
         android:text="retry" />
 
     <Button
-        android:id="@+id/buttonMainStart"
+        android:id="@+id/buttonMainMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/score5"
+        android:layout_below="@+id/buttonGameStart"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="89dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/button_background"
-        android:text="mainstart" />
+        android:text="menu" />
 
 
 </RelativeLayout>

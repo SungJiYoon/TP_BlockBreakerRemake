@@ -7,9 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import android.widget.ImageButton;
-
 import android.widget.Toast;
 
 public class LoginActivity extends Info {
@@ -18,8 +16,6 @@ public class LoginActivity extends Info {
     String Id;
     String Pass;
 
-    MediaPlayer main_mp = null; //게임화면 배경음악
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +23,6 @@ public class LoginActivity extends Info {
         idText = (EditText) findViewById(R.id.LogId); //값에서 아이디 져옴
         passText = (EditText) findViewById(R.id.LogPass);
 
-        main_mp = MediaPlayer.create(this, R.raw.main_mugic);
-        main_mp.setLooping(true);
-        main_mp.start();
 
         if (database != null) { //데이터 베이스에 있으면
             Cursor cursor = database.rawQuery("SELECT name, id, pass FROM MEMBER", null);
@@ -53,7 +46,6 @@ public class LoginActivity extends Info {
                         startActivity(gameStart);
                         Toast.makeText(getApplicationContext(), Cname + "님 환영합니다.",
                                 Toast.LENGTH_SHORT).show();
-                        main_mp.stop();
                     } else {
                         Toast.makeText(getApplicationContext(), "없는 아이디거나 패스워드가 틀렸습니다.",
                                 Toast.LENGTH_SHORT).show();
@@ -74,7 +66,5 @@ public class LoginActivity extends Info {
             }
         });
     }
-
-
 
 }

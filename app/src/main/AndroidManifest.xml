@@ -14,17 +14,15 @@
         <activity android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
         <activity android:name=".MainActivity"></activity>
 
-        <activity android:name="com.example.owner.gameactivity.GameActivity"></activity>
+		<activity android:name="com.example.owner.gameactivity.GameActivity"></activity>
         <activity android:name="com.example.owner.gameactivity.ClearActivity"></activity>
         <activity android:name="com.example.owner.gameactivity.SettingActivity"></activity>
-
-	</application>
         <activity android:name=".Info"></activity>
         <activity android:name=".SignActivity"></activity>
         <activity android:name=".RankActivity"></activity>

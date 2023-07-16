@@ -50,7 +50,7 @@ public class GameActivity extends AppCompatActivity {
         actionBar.setTitle(" 남은 체력 : 5/5");
         
       //받은 변수들을 GameView에 파라미터로 넘겨줌
-        mView = new GameView(this,leveltmp,colortmp,vibrationtmp,vibrator,bgmtmp,themetmp,actionBar);
+        mView = new GameView(this,leveltmp,colortmp,vibrationtmp,vibrator,bgmtmp,game_mp,themetmp,actionBar);
         setContentView(mView);
 
         if(bgmtmp == true){
